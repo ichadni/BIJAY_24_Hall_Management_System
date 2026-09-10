@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bijoy 24 Hall - Laundry Service</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            padding: 30px 20px;
+        }
+
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .info-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .info-card h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .info-card p {
+            color: #555;
+            line-height: 1.8;
+            font-size: 1.05em;
+            margin-bottom: 15px;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .price-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .price-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .price-amount {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .price-description {
+            font-size: 0.95em;
+            opacity: 0.9;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .feature-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .feature-item h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .feature-item p {
+            color: #666;
+            margin-bottom: 0;
+            font-size: 0.95em;
+        }
+
+        .booking-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .booking-section h2 {
+            color: #667eea;
+            margin-bottom: 25px;
+            font-size: 1.8em;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .booking-form {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #333;
+            font-weight: bold;
+            margin-bottom: 8px;
+            font-size: 1.05em;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .btn-primary {
+            padding: 14px 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-primary:active {
+            transform: translateY(-1px);
+        }
+
+        .machine-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .machine-card {
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .machine-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+        }
+
+        .machine-card.selected {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: #667eea;
+        }
+
+        .machine-icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .machine-name {
+            font-weight: bold;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+
+        .machine-status {
+            font-size: 0.9em;
+            padding: 8px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .status-available {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-booked {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .time-slot-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .time-slot {
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: white;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .time-slot:hover {
+            border-color: #667eea;
+            background: #f0f4ff;
+        }
+
+        .time-slot.selected {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: #667eea;
+        }
+
+        .time-slot.unavailable {
+            background: #f0f0f0;
+            color: #999;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .booking-summary {
+            background: #f0f4ff;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+            border-left: 4px solid #667eea;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            color: #333;
+            font-size: 1.05em;
+        }
+
+        .summary-item.total {
+            border-top: 2px solid #667eea;
+            padding-top: 10px;
+            margin-top: 10px;
+            font-weight: bold;
+            color: #667eea;
+            font-size: 1.2em;
+        }
+
+        .schedule-table {
+            width: 100%;
+            margin-top: 25px;
+            border-collapse: collapse;
+        }
+
+        .schedule-table th,
+        .schedule-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .schedule-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-weight: bold;
+        }
+
+        .schedule-table tr:hover {
+            background: #f8f9fa;
+        }
+
+        .status-badge {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: bold;
+        }
+
+        .status-badge.available {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-badge.booked {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .faq-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .faq-section h2 {
+            color: #667eea;
+            margin-bottom: 25px;
+            font-size: 1.8em;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .faq-question {
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.05em;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .faq-question::before {
+            content: "▶ ";
+            margin-right: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-answer {
+            color: #666;
+            line-height: 1.6;
+            margin-left: 25px;
+        }
+
+        .success-message {
+            display: none;
+            background: #d4edda;
+            color: #155724;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 4px solid #155724;
+        }
+
+        .error-message {
+            display: none;
+            background: #f8d7da;
+            color: #721c24;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 4px solid #721c24;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🧺 Bijoy 24 Hall - Laundry Service</h1>
+            <p>Convenient Washing Machine Booking System</p>
+        </div>
+
+        <!-- Service Overview -->
+        <div class="info-card">
+            <h2>📋 Laundry Service Overview</h2>
+            <p>
+                Welcome to our efficient laundry service! We provide self-service washing machines available 24/7 for all 
+                hall residents. Our state-of-the-art machines ensure your clothes are cleaned properly while being cost-effective.
+            </p>
+            <p>
+                Book your washing machine slot easily through this portal. Choose your preferred time, machine type, and get 
+                instant confirmation. Our washing machines are regularly maintained and kept in pristine condition.
+            </p>
+
+            <div class="features-grid">
+                <div class="feature-item">
+                    <h3>⏰ 24/7 Available</h3>
+                    <p>Book any time, day or night</p>
+                </div>
+                <div class="feature-item">
+                    <h3>🔄 Easy Booking</h3>
+                    <p>Simple online reservation system</p>
+                </div>
+                <div class="feature-item">
+                    <h3>✨ Well Maintained</h3>
+                    <p>Regular cleaning and servicing</p>
+                </div>
+                <div class="feature-item">
+                    <h3>💰 Affordable</h3>
+                    <p>Cost-effective pricing for students</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pricing Information -->
+        <div class="info-card">
+            <h2>💰 Pricing Information</h2>
+            <p>
+                Our laundry pricing is transparent and affordable. Each booking includes a fixed time slot for washing 
+                your clothes. Prices vary based on machine capacity and washing duration.
+            </p>
+
+            <div class="pricing-grid">
+                <div class="price-card">
+                    <h3>🌀 Standard Machine</h3>
+                    <div class="price-amount">৳ 50</div>
+                    <div class="price-description">
+                        Per 30-minute slot<br>
+                        <small>5kg capacity</small>
+                    </div>
+                </div>
+
+                <div class="price-card">
+                    <h3>🌀 Large Capacity</h3>
+                    <div class="price-amount">৳ 70</div>
+                    <div class="price-description">
+                        Per 45-minute slot<br>
+                        <small>8kg capacity</small>
+                    </div>
+                </div>
+
+                <div class="price-card">
+                    <h3>🌀 Extra Large</h3>
+                    <div class="price-amount">৳ 90</div>
+                    <div class="price-description">
+                        Per 60-minute slot<br>
+                        <small>12kg capacity</small>
+                    </div>
+                </div>
+
+                <div class="price-card">
+                    <h3>📦 Monthly Pass</h3>
+                    <div class="price-amount">৳ 800</div>
+                    <div class="price-description">
+                        Unlimited slots<br>
+                        <small>Best for heavy users</small>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 25px; padding: 20px; background: #f8f9fa; border-radius: 10px; border-left: 4px solid #667eea;">
+                <h3 style="color: #667eea; margin-bottom: 10px;">📝 Pricing Details</h3>
+                <p style="color: #555; margin-bottom: 8px;">
+                    <strong>🌊 Water + Detergent:</strong> Included in the slot price
+                </p>
+                <p style="color: #555; margin-bottom: 8px;">
+                    <strong>⏳ Time Slot Duration:</strong> 30, 45, or 60 minutes depending on machine and load
+                </p>
+                <p style="color: #555; margin-bottom: 8px;">
+                    <strong>🔄 Extra Time:</strong> ৳ 20 per additional 15 minutes
+                </p>
+                <p style="color: #555;">
+                    <strong>💳 Payment:</strong> Online booking payment + Hall account deduction
+                </p>
+            </div>
+        </div>
+
+        <!-- Washing Machine Booking -->
+        <div class="booking-section">
+            <h2>📅 Book Your Washing Machine Slot</h2>
+
+            <div id="successMessage" class="success-message"></div>
+            <div id="errorMessage" class="error-message"></div>
+
+            <div class="booking-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="studentName">Student Name</label>
+                        <input type="text" id="studentName" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="studentId">Student ID</label>
+                        <input type="text" id="studentId" placeholder="Enter your ID" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="phoneNumber">Phone Number</label>
+                        <input type="tel" id="phoneNumber" placeholder="Enter your contact number" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" placeholder="Enter your email" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Select Washing Machine Type</label>
+                    <div class="machine-grid" id="machineSelector">
+                        <div class="machine-card" data-machine="standard" data-price="50" data-capacity="5kg" onclick="selectMachine(this)">
+                            <div class="machine-icon">🌀</div>
+                            <div class="machine-name">Standard</div>
+                            <div class="machine-status status-available">Available</div>
+                            <small style="color: #666;">৳ 50 / 30 min</small>
+                        </div>
+                        <div class="machine-card" data-machine="large" data-price="70" data-capacity="8kg" onclick="selectMachine(this)">
+                            <div class="machine-icon">🌀</div>
+                            <div class="machine-name">Large</div>
+                            <div class="machine-status status-available">Available</div>
+                            <small style="color: #666;">৳ 70 / 45 min</small>
+                        </div>
+                        <div class="machine-card" data-machine="extra" data-price="90" data-capacity="12kg" onclick="selectMachine(this)">
+                            <div class="machine-icon">🌀</div>
+                            <div class="machine-name">Extra Large</div>
+                            <div class="machine-status status-available">Available</div>
+                            <small style="color: #666;">৳ 90 / 60 min</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="bookingDate">Booking Date</label>
+                        <input type="date" id="bookingDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="machineNumber">Machine Number (1-10)</label>
+                        <input type="number" id="machineNumber" min="1" max="10" placeholder="Select a machine" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Available Time Slots</label>
+                    <div class="time-slot-grid" id="timeSlots">
+                        <div class="time-slot" onclick="selectTimeSlot(this)">08:00 AM</div>
+                        <div class="time-slot" onclick="selectTimeSlot(this)">09:00 AM</div>
+                        <div class="time-slot" onclick="selectTimeSlot(this)">10:00 AM</div>
+                        <div class="time-slot unavailable">11:00 AM</div>
+                        <div class="time-slot" onclick="selectTimeSlot(this)">12:00 PM</div>
+                        <div class="time-slot" onclick="selectTimeSlot(this)">01:00 PM</div>
+                        <div class="time-slot" onclick="selectTimeSlot(this)">02:00 PM</div>
+                        <div class="time-slot" onclick="selectTimeSlot(this)">03:00 PM</div>
+                        <div class="time-slot" onclick="selectTimeSlot(this)">04:00 PM</div>
+                        <div class="time-slot unavailable">05:00 PM</div>
+                        <div class="time-slot" onclick="selectTimeSlot(this)">06:00 PM</div>
+                        <div class="time-slot" onclick="selectTimeSlot(this)">07:00 PM</div>
+                        <div class="time-slot" onclick="selectTimeSlot(this)">08:00 PM</div>
+                        <div class="time-slot" onclick="selectTimeSlot(this)">09:00 PM</div>
+                        <div class="time-slot" onclick="selectTimeSlot(this)">10:00 PM</div>
+                    </div>
+                </div>
+
+                <div class="booking-summary">
+                    <div class="summary-item">
+                        <span>Machine Type:</span>
+                        <span id="summaryMachine">Not selected</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Date:</span>
+                        <span id="summaryDate">Not selected</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Time Slot:</span>
+                        <span id="summaryTime">Not selected</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Price:</span>
+                        <span id="summaryPrice">৳ 0</span>
+                    </div>
+                    <div class="summary-item total">
+                        <span>Total Amount:</span>
+                        <span id="totalAmount">৳ 0</span>
+                    </div>
+                </div>
+
+                <button class="btn-primary" onclick="submitBooking()" style="margin-top: 20px; width: 100%;">
+                    ✓ Confirm Booking
+                </button>
+            </div>
+        </div>
+
+        <!-- Available Machines Schedule -->
+        <div class="info-card">
+            <h2>📊 Machine Availability Schedule</h2>
+            <table class="schedule-table">
+                <thead>
+                    <tr>
+                        <th>Machine #</th>
+                        <th>Capacity</th>
+                        <th>Status</th>
+                        <th>Next Available</th>
+                        <th>Price/Slot</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Machine 1</td>
+                        <td>5kg (Standard)</td>
+                        <td><span class="status-badge available">Available</span></td>
+                        <td>Now</td>
+                        <td>৳ 50</td>
+                    </tr>
+                    <tr>
+                        <td>Machine 2</td>
+                        <td>8kg (Large)</td>
+                        <td><span class="status-badge booked">Booked</span></td>
+                        <td>4:00 PM</td>
+                        <td>৳ 70</td>
+                    </tr>
+                    <tr>
+                        <td>Machine 3</td>
+                        <td>5kg (Standard)</td>
+                        <td><span class="status-badge available">Available</span></td>
+                        <td>Now</td>
+                        <td>৳ 50</td>
+                    </tr>
+                    <tr>
+                        <td>Machine 4</td>
+                        <td>12kg (Extra Large)</td>
+                        <td><span class="status-badge available">Available</span></td>
+                        <td>Now</td>
+                        <td>৳ 90</td>
+                    </tr>
+                    <tr>
+                        <td>Machine 5</td>
+                        <td>8kg (Large)</td>
+                        <td><span class="status-badge booked">Booked</span></td>
+                        <td>2:30 PM</td>
+                        <td>৳ 70</td>
+                    </tr>
+                    <tr>
+                        <td>Machine 6</td>
+                        <td>5kg (Standard)</td>
+                        <td><span class="status-badge available">Available</span></td>
+                        <td>Now</td>
+                        <td>৳ 50</td>
+                    </tr>
+                    <tr>
+                        <td>Machine 7</td>
+                        <td>12kg (Extra Large)</td>
+                        <td><span class="status-badge booked">Booked</span></td>
+                        <td>6:00 PM</td>
+                        <td>৳ 90</td>
+                    </tr>
+                    <tr>
+                        <td>Machine 8</td>
+                        <td>8kg (Large)</td>
+                        <td><span class="status-badge available">Available</span></td>
+                        <td>Now</td>
+                        <td>৳ 70</td>
+                    </tr>
+                    <tr>
+                        <td>Machine 9</td>
+                        <td>5kg (Standard)</td>
+                        <td><span class="status-badge available">Available</span></td>
+                        <td>Now</td>
+                        <td>৳ 50</td>
+                    </tr>
+                    <tr>
+                        <td>Machine 10</td>
+                        <td>12kg (Extra Large)</td>
+                        <td><span class="status-badge available">Available</span></td>
+                        <td>Now</td>
+                        <td>৳ 90</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="faq-section">
+            <h2>❓ Frequently Asked Questions</h2>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">What should I bring for laundry?</div>
+                <div class="faq-answer" style="display: none;">
+                    You should bring your clothes and detergent. However, we provide detergent included in the slot price. 
+                    You may bring your own detergent if you prefer a specific brand. Fabric softener is available at an additional cost.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">Can I extend my washing slot?</div>
+                <div class="faq-answer" style="display: none;">
+                    Yes, you can extend your slot by paying ৳ 20 for each additional 15 minutes, subject to availability. 
+                    Please request extension through the app or inform the laundry staff.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">How do I cancel my booking?</div>
+                <div class="faq-answer" style="display: none;">
+                    You can cancel your booking up to 2 hours before your scheduled slot through the app. 
+                    Full refund will be credited to your account. Late cancellations may incur a ৳ 10 cancellation fee.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">Is there a monthly package available?</div>
+                <div class="faq-answer" style="display: none;">
+                    Yes! We offer unlimited monthly passes for ৳ 800. This gives you unlimited access to all machines 
+                    for the entire month. Perfect for students who do laundry frequently.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">What if a machine breaks down during my slot?</div>
+                <div class="faq-answer" style="display: none;">
+                    If a machine malfunctions, we'll provide an alternative machine of the same or higher capacity at no extra cost. 
+                    If no alternatives are available, full refund will be issued.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">How is payment processed?</div>
+                <div class="faq-answer" style="display: none;">
+                    Payment is deducted from your hall account or can be paid online via card/mobile banking during booking. 
+                    Monthly passes must be purchased in advance.
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="info-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+            <h2 style="color: white; border-bottom-color: white;">📞 Contact & Support</h2>
+            <p>
+                Need help with your laundry booking? Contact our laundry management team:
+            </p>
+            <div class="features-grid">
+                <div class="feature-item" style="border-left-color: white; background: rgba(255,255,255,0.1);">
+                    <h3 style="color: white;">📧 Email</h3>
+                    <p style="color: rgba(255,255,255,0.9);">laundry@bijoy24hall.com</p>
+                </div>
+                <div class="feature-item" style="border-left-color: white; background: rgba(255,255,255,0.1);">
+                    <h3 style="color: white;">📞 Phone</h3>
+                    <p style="color: rgba(255,255,255,0.9);">+880-1XXX-XXXXXX</p>
+                </div>
+                <div class="feature-item" style="border-left-color: white; background: rgba(255,255,255,0.1);">
+                    <h3 style="color: white;">📍 Location</h3>
+                    <p style="color: rgba(255,255,255,0.9);">Ground Floor, West Wing</p>
+                </div>
+                <div class="feature-item" style="border-left-color: white; background: rgba(255,255,255,0.1);">
+                    <h3 style="color: white;">⏰ Timing</h3>
+                    <p style="color: rgba(255,255,255,0.9);">Available 24/7</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        let selectedMachine = null;
+        let selectedDate = null;
+        let selectedTime = null;
+        let selectedPrice = 0;
+
+        // Set today as minimum date
+        document.getElementById('bookingDate').min = new Date().toISOString().split('T')[0];
+
+        // Select Machine
+        function selectMachine(element) {
+            document.querySelectorAll('.machine-card').forEach(card => card.classList.remove('selected'));
+            element.classList.add('selected');
+            selectedMachine = {
+                type: element.dataset.machine,
+                name: element.querySelector('.machine-name').textContent,
+                price: parseInt(element.dataset.price),
+                capacity: element.dataset.capacity
+            };
+            selectedPrice = selectedMachine.price;
+            updateSummary();
+        }
+
+        // Select Time Slot
+        function selectTimeSlot(element) {
+            if (element.classList.contains('unavailable')) return;
+            document.querySelectorAll('.time-slot:not(.unavailable)').forEach(slot => slot.classList.remove('selected'));
+            element.classList.add('selected');
+            selectedTime = element.textContent;
+            updateSummary();
+        }
+
+        // Update Booking Summary
+        function updateSummary() {
+            document.getElementById('summaryMachine').textContent = selectedMachine ? selectedMachine.name : 'Not selected';
+            document.getElementById('summaryDate').textContent = document.getElementById('bookingDate').value || 'Not selected';
+            document.getElementById('summaryTime').textContent = selectedTime || 'Not selected';
+            document.getElementById('summaryPrice').textContent = '৳ ' + selectedPrice;
+            document.getElementById('totalAmount').textContent = '৳ ' + selectedPrice;
+        }
+
+        // Toggle FAQ
+        function toggleFAQ(element) {
+            const answer = element.nextElementSibling;
+            answer.style.display = answer.style.display === 'none' ? 'block' : 'none';
+            element.style.transform = answer.style.display === 'none' ? 'none' : 'rotate(90deg)';
+        }
+
+        // Submit Booking
+        function submitBooking() {
+            const name = document.getElementById('studentName').value;
+            const id = document.getElementById('studentId').value;
+            const phone = document.getElementById('phoneNumber').value;
+            const email = document.getElementById('email').value;
+            const date = document.getElementById('bookingDate').value;
+            const machineNo = document.getElementById('machineNumber').value;
+
+            if (!name || !id || !phone || !email) {
+                showError('Please fill in all personal details.');
+                return;
+            }
+
+            if (!selectedMachine) {
+                showError('Please select a washing machine type.');
+                return;
+            }
+
+            if (!date) {
+                showError('Please select a booking date.');
+                return;
+            }
+
+            if (!selectedTime) {
+                showError('Please select a time slot.');
+                return;
+            }
+
+            if (!machineNo) {
+                showError('Please select a machine number.');
+                return;
+            }
+
+            // Show success message
+            showSuccess(`
+                ✅ Booking Confirmed!<br><br>
+                <strong>Details:</strong><br>
+                Name: ${name}<br>
+                Machine: ${selectedMachine.name} (Machine #${machineNo})<br>
+                Date: ${date}<br>
+                Time: ${selectedTime}<br>
+                Duration: ${selectedMachine.type === 'standard' ? '30' : selectedMachine.type === 'large' ? '45' : '60'} minutes<br>
+                Amount Paid: ৳ ${selectedPrice}<br><br>
+                Confirmation SMS sent to ${phone}
+            `);
+
+            // Reset form
+            setTimeout(() => {
+                document.getElementById('bookingDate').value = '';
+                document.getElementById('studentName').value = '';
+                document.getElementById('studentId').value = '';
+                document.getElementById('phoneNumber').value = '';
+                document.getElementById('email').value = '';
+                document.getElementById('machineNumber').value = '';
+                document.querySelectorAll('.machine-card').forEach(card => card.classList.remove('selected'));
+                document.querySelectorAll('.time-slot').forEach(slot => slot.classList.remove('selected'));
+                selectedMachine = null;
+                selectedTime = null;
+                updateSummary();
+            }, 3000);
+        }
+
+        // Show Success Message
+        function showSuccess(message) {
+            const msgDiv = document.getElementById('successMessage');
+            msgDiv.innerHTML = message;
+            msgDiv.style.display = 'block';
+            document.getElementById('errorMessage').style.display = 'none';
+            setTimeout(() => msgDiv.style.display = 'none', 4000);
+        }
+
+        // Show Error Message
+        function showError(message) {
+            const msgDiv = document.getElementById('errorMessage');
+            msgDiv.textContent = '❌ ' + message;
+            msgDiv.style.display = 'block';
+            document.getElementById('successMessage').style.display = 'none';
+            setTimeout(() => msgDiv.style.display = 'none', 3000);
+        }
+    </script>
+</body>
+</html>

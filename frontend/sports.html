@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bijoy 24 Hall - Sports & Entertainment</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            padding: 30px 20px;
+        }
+
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .info-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .info-section h2 {
+            color: #f5576c;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            border-bottom: 3px solid #f5576c;
+            padding-bottom: 10px;
+        }
+
+        .info-section p {
+            color: #555;
+            line-height: 1.8;
+            font-size: 1.05em;
+            margin-bottom: 15px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .feature-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #f5576c;
+        }
+
+        .feature-item h3 {
+            color: #f5576c;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .feature-item p {
+            color: #666;
+            margin-bottom: 0;
+        }
+
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 25px;
+            border: 2px solid white;
+            background: transparent;
+            color: white;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: white;
+            color: #f5576c;
+            font-weight: bold;
+        }
+
+        .sports-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .sport-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .sport-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .sport-icon {
+            width: 100%;
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            font-size: 4em;
+        }
+
+        .sport-info {
+            padding: 20px;
+        }
+
+        .sport-name {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .sport-description {
+            font-size: 0.95em;
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .sport-details {
+            background: #f8f9fa;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            font-size: 0.9em;
+        }
+
+        .detail-label {
+            font-weight: bold;
+            color: #f5576c;
+        }
+
+        .sport-action {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-register {
+            flex: 1;
+            padding: 10px 15px;
+            background: #f5576c;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+
+        .btn-register:hover {
+            background: #f093fb;
+        }
+
+        .btn-info {
+            flex: 1;
+            padding: 10px 15px;
+            background: transparent;
+            color: #f5576c;
+            border: 2px solid #f5576c;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .btn-info:hover {
+            background: #f5576c;
+            color: white;
+        }
+
+        .category-title {
+            font-size: 2em;
+            color: white;
+            margin-top: 40px;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid white;
+        }
+
+        .tv-room-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .tv-room-section h2 {
+            color: #f5576c;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            border-bottom: 3px solid #f5576c;
+            padding-bottom: 10px;
+        }
+
+        .tv-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .tv-item {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .tv-item-icon {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        .tv-item-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .tv-item-desc {
+            font-size: 0.95em;
+            opacity: 0.9;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .stat-box {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #f5576c;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #f5576c;
+        }
+
+        .stat-label {
+            color: #666;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>⚽ Bijoy 24 Hall Sports & Entertainment</h1>
+            <p>Your Ultimate Recreation Destination</p>
+        </div>
+
+        <!-- Sports Room Information -->
+        <div class="info-section">
+            <h2>🏛️ Hall Sports Room - Overview</h2>
+            <p>
+                Welcome to Bijoy 24 Hall's premier sports and recreation facility! Our well-equipped sports room is designed 
+                to provide our residents with an ideal environment for physical activity, skill development, and friendly competitions. 
+                Located in the heart of the hall, our sports room is a hub of energy and enthusiasm where students can unwind, 
+                build friendships, and develop their athletic talents.
+            </p>
+            <p>
+                Whether you're a seasoned player or just looking to have some fun with friends, our sports room welcomes everyone. 
+                We maintain high standards of cleanliness, provide well-maintained equipment, and ensure a friendly atmosphere 
+                for all players regardless of skill level.
+            </p>
+
+            <div class="features-grid">
+                <div class="feature-item">
+                    <h3>⏰ Operating Hours</h3>
+                    <p>8:00 AM to 11:00 PM (Daily)</p>
+                </div>
+                <div class="feature-item">
+                    <h3>👥 Capacity</h3>
+                    <p>Multiple games simultaneously</p>
+                </div>
+                <div class="feature-item">
+                    <h3>🎯 Free Access</h3>
+                    <p>Available to all hall residents</p>
+                </div>
+                <div class="feature-item">
+                    <h3>🛠️ Equipment</h3>
+                    <p>Well-maintained & regularly serviced</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filters -->
+        <div class="filters">
+            <button class="filter-btn active" onclick="filterSports('all')">All Sports</button>
+            <button class="filter-btn" onclick="filterSports('indoor')">Indoor Games</button>
+            <button class="filter-btn" onclick="filterSports('outdoor')">Outdoor Sports</button>
+            <button class="filter-btn" onclick="filterSports('strategy')">Strategy Games</button>
+        </div>
+
+        <!-- Indoor Games -->
+        <div class="category-title">🏠 Indoor Games</div>
+        <div class="sports-grid" id="indoorGames">
+            <!-- Table Tennis Card -->
+            <div class="sport-card" data-category="indoor">
+                <div class="sport-icon">🏓</div>
+                <div class="sport-info">
+                    <div class="sport-name">Table Tennis</div>
+                    <div class="sport-description">
+                        Fast-paced indoor sport requiring quick reflexes and precision. Perfect for singles or doubles play.
+                    </div>
+                    <div class="sport-details">
+                        <span class="detail-label">Players:</span> 2 or 4
+                    </div>
+                    <div class="sport-details">
+                        <span class="detail-label">Tables:</span> 2 Professional Tables
+                    </div>
+                    <div class="sport-action">
+                        <button class="btn-register" onclick="registerSport('Table Tennis')">Register</button>
+                        <button class="btn-info" onclick="moreInfo('Table Tennis')">Info</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carrom Card -->
+            <div class="sport-card" data-category="indoor">
+                <div class="sport-icon">🎯</div>
+                <div class="sport-info">
+                    <div class="sport-name">Carrom</div>
+                    <div class="sport-description">
+                        Traditional board game of skill and strategy. Pocket all your coins before your opponent to win!
+                    </div>
+                    <div class="sport-details">
+                        <span class="detail-label">Players:</span> 2 or 4
+                    </div>
+                    <div class="sport-details">
+                        <span class="detail-label">Boards:</span> 4 Professional Boards
+                    </div>
+                    <div class="sport-action">
+                        <button class="btn-register" onclick="registerSport('Carrom')">Register</button>
+                        <button class="btn-info" onclick="moreInfo('Carrom')">Info</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ludo Card -->
+            <div class="sport-card" data-category="indoor">
+                <div class="sport-icon">🎲</div>
+                <div class="sport-info">
+                    <div class="sport-name">Ludo</div>
+                    <div class="sport-description">
+                        Classic board game of luck and strategy. Race your tokens to home while blocking opponents' progress.
+                    </div>
+                    <div class="sport-details">
+                        <span class="detail-label">Players:</span> 2 to 4
+                    </div>
+                    <div class="sport-details">
+                        <span class="detail-label">Available:</span> 6 Boards
+                    </div>
+                    <div class="sport-action">
+                        <button class="btn-register" onclick="registerSport('Ludo')">Register</button>
+                        <button class="btn-info" onclick="moreInfo('Ludo')">Info</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chess Card -->
+            <div class="sport-card" data-category="strategy">
+                <div class="sport-icon">♟️</div>
+                <div class="sport-info">
+                    <div class="sport-name">Chess</div>
+                    <div class="sport-description">
+                        The game of kings! Test your strategic thinking and tactical skills against worthy opponents.
+                    </div>
+                    <div class="sport-details">
+                        <span class="detail-label">Players:</span> 2
+                    </div>
+                    <div class="sport-details">
+                        <span class="detail-label">Sets:</span> 8 Professional Sets
+                    </div>
+                    <div class="sport-action">
+                        <button class="btn-register" onclick="registerSport('Chess')">Register</button>
+                        <button class="btn-info" onclick="moreInfo('Chess')">Info</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Outdoor Sports -->
+        <div class="category-title">⚽ Outdoor Sports</div>
+        <div class="sports-grid" id="outdoorSports">
+            <!-- Cricket Card -->
+            <div class="sport-card" data-category="outdoor">
+                <div class="sport-icon">🏏</div>
+                <div class="sport-info">
+                    <div class="sport-name">Cricket</div>
+                    <div class="sport-description">
+                        The most popular sport in South Asia! Join inter-floor tournaments and friendly matches throughout the year.
+                    </div>
+                    <div class="sport-details">
+                        <span class="detail-label">Players:</span> 11 per side
+                    </div>
+                    <div class="sport-details">
+                        <span class="detail-label">Tournaments:</span> Monthly League
+                    </div>
+                    <div class="sport-action">
+                        <button class="btn-register" onclick="registerSport('Cricket')">Register</button>
+                        <button class="btn-info" onclick="moreInfo('Cricket')">Info</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Football Card -->
+            <div class="sport-card" data-category="outdoor">
+                <div class="sport-icon">⚽</div>
+                <div class="sport-info">
+                    <div class="sport-name">Football</div>
+                    <div class="sport-description">
+                        The beautiful game! Showcase your skills, teamwork, and passion for football in our organized matches.
+                    </div>
+                    <div class="sport-details">
+                        <span class="detail-label">Players:</span> 11 per side
+                    </div>
+                    <div class="sport-details">
+                        <span class="detail-label">Ground:</span> Full-size Pitch
+                    </div>
+                    <div class="sport-action">
+                        <button class="btn-register" onclick="registerSport('Football')">Register</button>
+                        <button class="btn-info" onclick="moreInfo('Football')">Info</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Badminton Card -->
+            <div class="sport-card" data-category="outdoor">
+                <div class="sport-icon">🏸</div>
+                <div class="sport-info">
+                    <div class="sport-name">Badminton</div>
+                    <div class="sport-description">
+                        Dynamic racquet sport perfect for developing agility and hand-eye coordination. Available for casual play.
+                    </div>
+                    <div class="sport-details">
+                        <span class="detail-label">Players:</span> 2 or 4
+                    </div>
+                    <div class="sport-details">
+                        <span class="detail-label">Courts:</span> 3 Courts Available
+                    </div>
+                    <div class="sport-action">
+                        <button class="btn-register" onclick="registerSport('Badminton')">Register</button>
+                        <button class="btn-info" onclick="moreInfo('Badminton')">Info</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TV Room Section -->
+        <div class="tv-room-section">
+            <h2>📺 Entertainment & TV Room</h2>
+            <p>
+                Complement your sports activities with our entertainment zone! Our dedicated TV room provides a comfortable 
+                space where residents can relax and enjoy their favorite movies, sports channels, and shows.
+            </p>
+
+            <div class="stats">
+                <div class="stat-box">
+                    <div class="stat-number">1</div>
+                    <div class="stat-label">Large Screen TV</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Channels Available</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Access</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">Comfort</div>
+                    <div class="stat-label">Seating & AC</div>
+                </div>
+            </div>
+
+            <div class="tv-content">
+                <div class="tv-item">
+                    <div class="tv-item-icon">🎬</div>
+                    <div class="tv-item-title">Movies</div>
+                    <div class="tv-item-desc">Latest Bollywood, Hollywood & Bengali films</div>
+                </div>
+                <div class="tv-item">
+                    <div class="tv-item-icon">🏆</div>
+                    <div class="tv-item-title">Sports Channels</div>
+                    <div class="tv-item-desc">Live cricket, football, and international sports</div>
+                </div>
+                <div class="tv-item">
+                    <div class="tv-item-icon">📺</div>
+                    <div class="tv-item-title">TV Shows</div>
+                    <div class="tv-item-desc">Popular web series, dramas, and entertainment</div>
+                </div>
+                <div class="tv-item">
+                    <div class="tv-item-icon">🍿</div>
+                    <div class="tv-item-title">Comfortable Zone</div>
+                    <div class="tv-item-desc">Spacious seating with good air conditioning</div>
+                </div>
+                <div class="tv-item">
+                    <div class="tv-item-icon">🎵</div>
+                    <div class="tv-item-title">Music & Entertainment</div>
+                    <div class="tv-item-desc">Music videos and entertainment programs</div>
+                </div>
+                <div class="tv-item">
+                    <div class="tv-item-icon">👥</div>
+                    <div class="tv-item-title">Social Hub</div>
+                    <div class="tv-item-desc">Great place to hangout with friends</div>
+                </div>
+            </div>
+
+            <div style="margin-top: 30px; background: #f8f9fa; padding: 20px; border-radius: 10px; border-left: 4px solid #f5576c;">
+                <h3 style="color: #f5576c; margin-bottom: 10px;">📅 TV Room Schedule</h3>
+                <p style="color: #666; margin-bottom: 10px;">
+                    <strong>Morning (8 AM - 12 PM):</strong> News, Educational Programs<br>
+                    <strong>Afternoon (12 PM - 5 PM):</strong> Movies & Entertainment<br>
+                    <strong>Evening (5 PM - 8 PM):</strong> Sports Coverage<br>
+                    <strong>Night (8 PM - 11:30 PM):</strong> Web Series & Shows
+                </p>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="info-section" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; text-align: center;">
+            <h2 style="color: white; border-bottom-color: white;">Join the Sports Community!</h2>
+            <p>
+                Make the most of your hall life! Participate in sports, build friendships, stay healthy, and create 
+                unforgettable memories. Our sports facilities are open to all residents.
+            </p>
+            <button class="btn-register" onclick="contactSportsSecretary()" style="margin-top: 20px; padding: 12px 40px; font-size: 1.1em; background: white; color: #f5576c; border: none;">
+                Contact Sports Secretary
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Filter functionality
+        function filterSports(category) {
+            const cards = document.querySelectorAll('.sport-card');
+            const buttons = document.querySelectorAll('.filter-btn');
+
+            // Update active button
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Filter cards
+            cards.forEach(card => {
+                if (category === 'all') {
+                    card.style.display = 'block';
+                } else {
+                    if (card.dataset.category === category) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                }
+            });
+        }
+
+        // Register for sport
+        function registerSport(sportName) {
+            alert(`✅ Registration request for ${sportName} submitted!\n\nYou will be contacted shortly with tournament/match details.`);
+        }
+
+        // More info
+        function moreInfo(sportName) {
+            const info = {
+                'Table Tennis': 'Tournaments every month. Bring your own racket or use provided equipment. Beginners welcome!',
+                'Carrom': 'Inter-floor competitions every fortnight. Board tournaments organized with prizes.',
+                'Ludo': 'Casual gaming available 24/7. Tournament in summer and winter breaks.',
+                'Chess': 'Weekly chess club meetings. Monthly tournaments for all skill levels.',
+                'Cricket': 'Practice sessions on weekends. Inter-floor tournament twice a year.',
+                'Football': 'Weekly friendly matches. Major tournament at the end of each semester.',
+                'Badminton': 'Practice courts available daily. Coaching available for interested students.'
+            };
+            alert(`📖 ${sportName} Info:\n\n${info[sportName]}`);
+        }
+
+        // Contact sports secretary
+        function contactSportsSecretary() {
+            alert(`📞 Contact Sports Secretary\n\nEmail: sports@bijoy24hall.com\nPhone: +880-1XXX-XXXXXX\nOffice: Sports Room, Ground Floor\nBest time to visit: 7-9 PM`);
+        }
+    </script>
+</body>
+</html>

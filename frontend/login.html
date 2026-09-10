@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bijoy 24 Hall - Authentication</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .auth-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        .auth-container {
+            background: white;
+            border-radius: 18px;
+            padding: 2rem;
+            width: 100%;
+            max-width: 480px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .auth-tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #eee;
+        }
+
+        .auth-tab {
+            flex: 1;
+            padding: 12px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            color: #666;
+        }
+
+        .auth-tab.active {
+            color: #667eea;
+            border-bottom: 2px solid #667eea;
+        }
+
+        .auth-form {
+            display: none;
+        }
+
+        .auth-form.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        .btn-primary {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .redirect-message {
+            background: #e3f2fd;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 14px;
+            color: #1976d2;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <nav>
+        <div class="logo">
+            <div class="logo-icon">B24</div>
+            <h2>Bijoy 24 Hall</h2>
+        </div>
+    </nav>
+</header>
+
+<section class="auth-section">
+    <div class="auth-container">
+
+        <!-- Redirect Info Message -->
+        <div id="redirectMessage" class="redirect-message" style="display: none;">
+            🔄 Please login to continue to the application form
+        </div>
+
+        <!-- Tabs -->
+        <div class="auth-tabs">
+            <button class="auth-tab active" onclick="showLogin()">Login</button>
+            <button class="auth-tab" onclick="showRegister()">Register</button>
+        </div>
+
+        <!-- LOGIN -->
+        <div id="loginForm" class="auth-form active">
+            <form onsubmit="handleLogin(event)">
+
+                <div class="form-group">
+                    <label>Login As</label>
+                    <select id="loginRole" required>
+                        <option value="student">Student</option>
+                        <option value="admin">Hall Admin</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Email / Student ID</label>
+                    <input type="text" id="loginId" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+
+                <button class="btn-primary" type="submit">Login</button>
+            </form>
+        </div>
+
+        <!-- REGISTER -->
+        <div id="registerForm" class="auth-form">
+            <form onsubmit="handleRegister(event)">
+
+                <div class="form-group">
+                    <label>Register As</label>
+                    <select id="registerRole" required>
+                        <option value="student">Student</option>
+                        <option value="admin">Hall Admin</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="regName" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="regEmail" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Student ID (only for students)</label>
+                    <input type="text" id="regStudentId">
+                </div>
+
+                <div class="form-group">
+                    <label>Phone</label>
+                    <input type="tel" id="regPhone" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="regPassword" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Confirm Password</label>
+                    <input type="password" id="regConfirmPassword" required>
+                </div>
+
+                <button class="btn-primary" type="submit">Register</button>
+            </form>
+        </div>
+
+    </div>
+</section>
+
+<script src="student-auth.js"></script>
+
+<script>
+    // Check for redirect URL from localStorage or URL parameter
+    window.addEventListener('DOMContentLoaded', function() {
+        // Check URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        let redirectUrl = urlParams.get('redirect');
+        
+        // Check localStorage
+        if (!redirectUrl) {
+            redirectUrl = localStorage.getItem('redirectAfterLogin');
+        }
+        
+        if (redirectUrl && redirectUrl !== 'null' && redirectUrl !== 'undefined') {
+            // Show message
+            const msgDiv = document.getElementById('redirectMessage');
+            if (msgDiv) {
+                msgDiv.style.display = 'block';
+                if (redirectUrl.includes('admission')) {
+                    msgDiv.textContent = '📝 Please login to continue with your admission application';
+                } else if (redirectUrl.includes('dashboard')) {
+                    msgDiv.textContent = '🔐 Please login to access your dashboard';
+                } else {
+                    msgDiv.textContent = '🔄 Please login to continue';
+                }
+            }
+            
+            // Store for use after login
+            window.pendingRedirect = redirectUrl;
+        }
+    });
+
+    function showLogin(){
+        document.getElementById("loginForm").classList.add("active");
+        document.getElementById("registerForm").classList.remove("active");
+    }
+
+    function showRegister(){
+        document.getElementById("registerForm").classList.add("active");
+        document.getElementById("loginForm").classList.remove("active");
+    }
+</script>
+
+</body>
+</html>

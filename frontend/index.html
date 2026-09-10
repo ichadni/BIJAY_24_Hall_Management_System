@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bijoy 24 Hall - Hall Management System</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="api.js"></script>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <nav>
+            <div class="logo">
+                <div class="logo-icon">B24</div>
+                <h1>Bijoy 24 Hall</h1>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="login.html" class="btn-login">Login</a></li>
+            </ul>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Welcome to Bijoy 24 Hall</h1>
+            <p>Digital Hall Management System</p>
+            <div class="cta-buttons">
+                <!-- UPDATED: Direct to login with redirect parameter -->
+                <a href="login.html?redirect=admission.html" class="btn btn-primary">Apply for Admission</a>
+                <a href="#features" class="btn btn-secondary">Explore Features</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="stat-number" data-target="132">0</div>
+                <div class="stat-label">Total Rooms</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-target="528">0</div>
+                <div class="stat-label">Student Capacity</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-target="4">0</div>
+                <div class="stat-label">Students per Room</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-target="24">0</div>
+                <div class="stat-label">24/7 Services</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <h2 class="section-title">Our Features & Services</h2>
+        <div class="features-grid">
+            <!-- Hall Admission - UPDATED -->
+            <div class="feature-card" onclick="window.location.href='login.html?redirect=admission.html'">
+                <div class="feature-icon">🎓</div>
+                <h3>Hall Admission</h3>
+                <p>Online application, merit-based seat allocation, and transparent admission process with digital fee payment.</p>
+                <a href="login.html?redirect=admission.html" class="feature-link">Apply Now →</a>
+            </div>
+
+            <!-- Seat Allocation -->
+            <div class="feature-card" onclick="window.location.href='seat-allocation.html'">
+                <div class="feature-icon">🛏️</div>
+                <h3>Seat Allocation</h3>
+                <p>Smart room assignment based on department and batch with 4 students per room. Complete furniture provided.</p>
+                <a href="seat_allocation.html" class="feature-link">View Details →</a>
+            </div>
+
+            <!-- Hall Office Management -->
+            <div class="feature-card" onclick="window.location.href='hall-office.html'">
+                <div class="feature-icon">🏢</div>
+                <h3>Hall Office</h3>
+                <p>Dedicated staff including supervisors, electricians, cleaners, and guards ensuring smooth operations.</p>
+                <a href="hall-office.html" class="feature-link">Learn More →</a>
+            </div>
+
+            <!-- Complaints & Reports -->
+            <div class="feature-card" onclick="window.location.href='complaints.html'">
+                <div class="feature-icon">📝</div>
+                <h3>Complaint System</h3>
+                <p>Easy complaint submission and tracking. Report issues directly to hall office for quick resolution.</p>
+                <a href="complaints.html" class="feature-link">Submit Complaint →</a>
+            </div>
+
+            <!-- Dining & Cafeteria -->
+            <div class="feature-card" onclick="window.location.href='dining.html'">
+                <div class="feature-icon">🍽️</div>
+                <h3>Dining & Cafeteria</h3>
+                <p>Quality meals with approved menus by provost. Transparent pricing and hygienic food preparation.</p>
+                <a href="dining.html" class="feature-link">View Menu →</a>
+            </div>
+
+            <!-- Sports & Entertainment -->
+            <div class="feature-card" onclick="window.location.href='sports.html'">
+                <div class="feature-icon">🏆</div>
+                <h3>Sports & Recreation</h3>
+                <p>Common room with TV, indoor games (table tennis, carrom, chess), and sports equipment management.</p>
+                <a href="sports.html" class="feature-link">Book Equipment →</a>
+            </div>
+
+            <!-- Library & Reading Rooms -->
+            <div class="feature-card" onclick="window.location.href='library.html'">
+                <div class="feature-icon">📚</div>
+                <h3>Library & Reading Rooms</h3>
+                <p>3 reading rooms with 20-seat capacity each, CCTV monitored, and peaceful study environment.</p>
+                <a href="library.html" class="feature-link">Book Seat →</a>
+            </div>
+
+            <!-- Guest Room -->
+            <div class="feature-card" onclick="window.location.href='guest-room.html'">
+                <div class="feature-icon">🏨</div>
+                <h3>Guest Room</h3>
+                <p>Comfortable guest room facilities for visitors with proper booking and management system.</p>
+                <a href="guest-room.html" class="feature-link">Book Room →</a>
+            </div>
+
+            <!-- Laundry Services -->
+            <div class="feature-card" onclick="window.location.href='laundry.html'">
+                <div class="feature-icon">🧺</div>
+                <h3>Laundry & Washing</h3>
+                <p>Washing machines and laundry shop. Mobile app-operated machines for student convenience.</p>
+                <a href="laundry.html" class="feature-link">Access Service →</a>
+            </div>
+
+            <!-- Vending Machine -->
+            <div class="feature-card" onclick="window.location.href='vending.html'">
+                <div class="feature-icon">🥤</div>
+                <h3>Vending Machine</h3>
+                <p>24/7 vending machine for snacks and beverages. Mobile app integration for easy access.</p>
+                <a href="vending.html" class="feature-link">View Items →</a>
+            </div>
+
+            <!-- Stationary Shop -->
+            <div class="feature-card" onclick="window.location.href='stationary.html'">
+                <div class="feature-icon">✏️</div>
+                <h3>Stationary Shop</h3>
+                <p>On-campus stationary shop for all educational supplies and essentials.</p>
+                <a href="stationary.html" class="feature-link">Shop Now →</a>
+            </div>
+
+            <!-- Communication -->
+            <div class="feature-card" onclick="window.location.href='communication.html'">
+                <div class="feature-icon">💬</div>
+                <h3>Social Communication</h3>
+                <p>WhatsApp and Messenger groups for instant updates, announcements, and student communication.</p>
+                <a href="communication.html" class="feature-link">Join Groups →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admission Process Section -->
+    <section class="admission-process" id="about">
+        <h2 class="section-title">Admission Process</h2>
+        <div class="process-timeline">
+            <div class="process-step">
+                <div class="step-number">1</div>
+                <h3>Online Application</h3>
+                <p>Apply online after provost notice. Selection based on merit, economic condition, and distance.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">2</div>
+                <h3>Fee Deposit</h3>
+                <p>Selected students deposit ৳2,100 admission fee at Sonali Bank.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">3</div>
+                <h3>Document Submission</h3>
+                <p>Submit passport photo, stamp photo, transcript copy, and university ID card.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">4</div>
+                <h3>Form Fill-up</h3>
+                <p>Collect and fill admission form with authentic information and provost approval.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">5</div>
+                <h3>Hall Card Issue</h3>
+                <p>Receive official hall ID card with name, registration number, and provost signature.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Notice Board Section -->
+    <section class="notice-board">
+        <h2 class="section-title">Latest Notices</h2>
+        <div class="notices-container">
+            <div class="notice-item">
+                <div class="notice-date">Jan 09, 2026</div>
+                <h3>Seat Allocation Notice - Spring 2026</h3>
+                <p>Seat allocation for Spring 2026 semester will begin from January 15, 2026...</p>
+                <a href="#" class="notice-link">Read More</a>
+            </div>
+            <div class="notice-item">
+                <div class="notice-date">Jan 08, 2026</div>
+                <h3>Dining Menu Update</h3>
+                <p>Updated dining menu for the month of January has been approved by the provost...</p>
+                <a href="dining.html" class="notice-link">View Menu</a>
+            </div>
+            <div class="notice-item">
+                <div class="notice-date">Jan 05, 2026</div>
+                <h3>Sports Tournament Announcement</h3>
+                <p>Inter-hall sports tournament registration is now open. Register before January 20...</p>
+                <a href="sports.html" class="notice-link">Register Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <h2 class="section-title">Contact Us</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <h3>Address</h3>
+                    <p>Bijoy 24 Hall<br>Shahjalal University of Science and Technology<br>Sylhet, Bangladesh</p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📞</div>
+                    <h3>Phone</h3>
+                    <p>+880-821-XXXXXX</p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">✉️</div>
+                    <h3>Email</h3>
+                    <p>info@bijoy24hall.edu.bd</p>
+                </div>
+            </div>
+            <div class="contact-form">
+                <form id="contactForm">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea placeholder="Your Message" rows="5" required></textarea>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Bijoy 24 Hall</h3>
+                <p>Digital Hall Management System for efficient and transparent operations.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Important Links</h3>
+                <ul>
+                    <li><a href="login.html?redirect=admission.html">Admission Notice</a></li>
+                    <li><a href="dining.html">Fee Structure</a></li>
+                    <li><a href="#">Rules & Regulations</a></li>
+                    <li><a href="hall-office.html">Hall Committee</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Bijoy 24 Hall. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Bijoy 24 Hall</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+    <nav>
+        <div class="logo">
+            <div class="logo-icon">B24</div>
+            <h1>Bijoy 24 Hall</h1>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+
+            <!-- FIXED LOGOUT -->
+            <li><a href="#" onclick="logout(event)" class="btn-login">Logout</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- DASHBOARD -->
+<section class="dashboard-section">
+    <div class="dashboard-container">
+
+        <h1>Welcome, <span id="userName">Student</span></h1>
+
+        <!-- STATS -->
+        <div class="dashboard-stats">
+
+            <div class="dash-stat-card">
+                <h3 id="applicationStatus">No Application</h3>
+                <p>Application Status</p>
+            </div>
+
+            <div class="dash-stat-card">
+                <h3 id="roomNumber">Not Allocated</h3>
+                <p>Room</p>
+            </div>
+
+            <div class="dash-stat-card">
+                <h3 id="feeStatus">Pending</h3>
+                <p>Fee</p>
+            </div>
+
+            <div class="dash-stat-card">
+                <h3 id="hallCard">Not Issued</h3>
+                <p>Hall Card</p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <p>&copy; 2026 Bijoy 24 Hall</p>
+</footer>
+
+<!-- IMPORTANT: correct relative path -->
+<script src="./dashboard.js"></script>
+
+</body>
+</html>

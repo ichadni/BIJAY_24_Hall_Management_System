@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - Bijoy 24 Hall</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background: #f5f7fb;
+        }
+
+        .dashboard-layout {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: 280px;
+            background: linear-gradient(180deg, #1f2937 0%, #111827 100%);
+            color: white;
+            padding: 24px 20px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .logo-box {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .logo h2 {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .nav {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            flex: 1;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: #9ca3af;
+            padding: 12px 16px;
+            border-radius: 10px;
+            transition: all 0.2s;
+            font-weight: 500;
+        }
+
+        .nav a:hover {
+            background: rgba(79, 70, 229, 0.2);
+            color: white;
+        }
+
+        .logout-btn {
+            margin-top: auto;
+            background: #ef4444;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.2s;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .logout-btn:hover {
+            background: #dc2626;
+        }
+
+        /* Main Content Styles */
+        .main {
+            flex: 1;
+        }
+
+        .topbar {
+            background: white;
+            padding: 16px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e5e7eb;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .topbar > div:first-child {
+            font-weight: 500;
+            color: #374151;
+        }
+
+        #userInitial {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .content {
+            padding: 32px;
+        }
+
+        /* Cards Grid */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .card {
+            background: white;
+            padding: 24px;
+            border-radius: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid #f0f0f0;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .card h3 {
+            color: #374151;
+            margin-bottom: 16px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .card p {
+            color: #6b7280;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .apply-link {
+            display: inline-block;
+            margin-top: 12px;
+            color: #4f46e5;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .apply-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Success/Status Colors */
+        .status-approved {
+            color: #065f46 !important;
+            background: #d1fae5;
+            padding: 8px 12px;
+            border-radius: 10px;
+        }
+
+        .status-pending {
+            color: #92400e !important;
+            background: #fef3c7;
+            padding: 8px 12px;
+            border-radius: 10px;
+        }
+
+        .status-rejected {
+            color: #991b1b !important;
+            background: #fee2e2;
+            padding: 8px 12px;
+            border-radius: 10px;
+        }
+
+        /* Room Info Styles */
+        .room-info {
+            background: #ecfdf5;
+            padding: 12px;
+            border-radius: 12px;
+            margin-top: 8px;
+        }
+
+        .room-info strong {
+            color: #065f46;
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-layout {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="dashboard-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="logo">
+            <div class="logo-box">B24</div>
+            <h2>Bijoy 24 Hall</h2>
+        </div>
+
+        <nav class="nav">
+            <a href="dashboard.html">📊 Dashboard</a>
+            <a href="admission.html">📝 Admission</a>
+            <a href="complaints.html">💬 Complaints</a>
+            <a href="dining.html">🍽️ Dining</a>
+            <a href="library.html">📚 Library</a>
+        </nav>
+
+        <button class="logout-btn" id="logoutBtn">🚪 Logout</button>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+        <div class="topbar">
+            <div>👋 Welcome, <span id="userName">Student</span>!</div>
+            <div id="userInitial">S</div>
+        </div>
+
+        <div class="content">
+            <div class="cards">
+                <!-- Application Status Card -->
+                <div class="card">
+                    <h3>📋 Application Status</h3>
+                    <p id="applicationStatus">Loading...</p>
+                </div>
+
+                <!-- Room Allocation Card -->
+                <div class="card">
+                    <h3>🛏️ Room Allocation</h3>
+                    <p id="roomNumber">Not Allocated</p>
+                </div>
+
+                <!-- Fee Status Card -->
+                <div class="card">
+                    <h3>💰 Fee Status</h3>
+                    <p id="feeStatus">Pending</p>
+                </div>
+
+                <!-- Hall Card Status Card -->
+                <div class="card">
+                    <h3>🪪 Hall Card</h3>
+                    <p id="hallCard">Not Issued</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</div>
+
+<script src="student-dashboard.js"></script>
+
+</body>
+</html>

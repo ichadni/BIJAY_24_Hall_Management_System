@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seat Allocation - Bijoy 24 Hall</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <div class="logo-icon">B24</div>
+                <h1>Bijoy 24 Hall</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="#" onclick="logout()" class="btn-login">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Seat Allocation Section -->
+    <section class="page-section">
+        <div class="page-container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <div class="header-icon">🛏️</div>
+                <h1>Seat Allocation</h1>
+                <p>View your room allocation details and seat information</p>
+            </div>
+
+            <!-- Student Info Card -->
+            <div class="info-banner">
+                <div class="banner-content">
+                    <h3 id="studentNameDisplay">Loading...</h3>
+                    <p><strong>Reg No:</strong> <span id="studentRegDisplay">-</span> | 
+                       <strong>Department:</strong> <span id="studentDeptDisplay">-</span></p>
+                </div>
+            </div>
+
+            <!-- Allocation Status -->
+            <div class="status-card" id="allocationStatus">
+                <div class="status-icon">⏳</div>
+                <h2>Checking Allocation Status...</h2>
+                <p>Please wait while we fetch your seat allocation details</p>
+            </div>
+
+            <!-- Room Details Card (Hidden by default) -->
+            <div class="room-details-card" id="roomDetailsCard" style="display: none;">
+                <div class="card-header">
+                    <h2>Your Room Allocation</h2>
+                    <span class="status-badge status-approved">Allocated ✓</span>
+                </div>
+
+                <div class="room-info-grid">
+                    <!-- Room Number -->
+                    <div class="room-info-item large">
+                        <div class="info-icon">🏠</div>
+                        <div class="info-content">
+                            <label>Room Number</label>
+                            <h2 id="allocatedRoom">-</h2>
+                        </div>
+                    </div>
+
+                    <!-- Floor -->
+                    <div class="room-info-item">
+                        <div class="info-icon">🏢</div>
+                        <div class="info-content">
+                            <label>Floor</label>
+                            <h3 id="allocatedFloor">-</h3>
+                        </div>
+                    </div>
+
+                    <!-- Bed Number -->
+                    <div class="room-info-item">
+                        <div class="info-icon">🛏️</div>
+                        <div class="info-content">
+                            <label>Bed Number</label>
+                            <h3 id="allocatedBed">-</h3>
+                        </div>
+                    </div>
+
+                    <!-- Allocation Date -->
+                    <div class="room-info-item">
+                        <div class="info-icon">📅</div>
+                        <div class="info-content">
+                            <label>Allocated On</label>
+                            <h3 id="allocationDate">-</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Facilities -->
+                <div class="facilities-section">
+                    <h3>Room Facilities</h3>
+                    <div class="facilities-grid">
+                        <div class="facility-item">
+                            <span class="facility-icon">🛏️</span>
+                            <span>Bed</span>
+                        </div>
+                        <div class="facility-item">
+                            <span class="facility-icon">🪑</span>
+                            <span>Chair</span>
+                        </div>
+                        <div class="facility-item">
+                            <span class="facility-icon">📚</span>
+                            <span>Study Table</span>
+                        </div>
+                        <div class="facility-item">
+                            <span class="facility-icon">🗄️</span>
+                            <span>Almirah</span>
+                        </div>
+                        <div class="facility-item">
+                            <span class="facility-icon">💡</span>
+                            <span>Stand Light</span>
+                        </div>
+                        <div class="facility-item">
+                            <span class="facility-icon">🪟</span>
+                            <span>Window</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Roommates (if available) -->
+                <div class="roommates-section">
+                    <h3>Your Roommates</h3>
+                    <div class="roommates-grid" id="roommatesList">
+                        <p class="text-muted">Roommate information will be updated soon...</p>
+                    </div>
+                </div>
+
+                <!-- Room Rules -->
+                <div class="rules-section">
+                    <h3>Room Rules & Guidelines</h3>
+                    <ul class="rules-list">
+                        <li>✓ Maintain cleanliness and hygiene in the room</li>
+                        <li>✓ Keep noise levels low, especially during study hours (9 PM - 7 AM)</li>
+                        <li>✓ Do not damage hall property or furniture</li>
+                        <li>✓ Guests are not allowed in rooms without prior permission</li>
+                        <li>✓ Report any maintenance issues to the hall office immediately</li>
+                        <li>✓ Follow hall timings and entry/exit protocols</li>
+                        <li>✓ Respect your roommates' privacy and space</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Not Allocated Card -->
+            <div class="not-allocated-card" id="notAllocatedCard" style="display: none;">
+                <div class="empty-state">
+                    <div class="empty-icon">🏠</div>
+                    <h2>No Seat Allocated Yet</h2>
+                    <p>Your seat will be allocated after your admission application is approved.</p>
+                    
+                    <div class="next-steps">
+                        <h3>Next Steps:</h3>
+                        <ol>
+                            <li>Ensure your admission application is submitted</li>
+                            <li>Wait for provost approval</li>
+                            <li>Once approved, hall office will allocate your seat</li>
+                            <li>You will receive a notification via email and SMS</li>
+                        </ol>
+                    </div>
+
+                    <div class="action-buttons">
+                        <a href="admission.html" class="btn btn-primary">Apply for Admission</a>
+                        <a href="dashboard.html" class="btn btn-secondary">Back to Dashboard</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hall Layout Info -->
+            <div class="info-card">
+                <h3>Bangabandhu Hall Information</h3>
+                <div class="hall-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">132</span>
+                        <span class="stat-label">Total Rooms</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">528</span>
+                        <span class="stat-label">Total Capacity</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">4</span>
+                        <span class="stat-label">Students per Room</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">5</span>
+                        <span class="stat-label">Floors</span>
+                    </div>
+                </div>
+                <p class="info-text">
+                    Seats are allocated based on department, session, and batch. Students from the same department 
+                    and batch are usually assigned to the same room for better coordination and study environment.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Bijoy 24 Hall. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="seat-allocation.js"></script>
+</body>
+</html>

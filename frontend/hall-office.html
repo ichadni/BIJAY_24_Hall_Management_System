@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bijoy 24 Hall - Hall Office</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            padding: 40px 20px;
+        }
+
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .section {
+            background: white;
+            border-radius: 15px;
+            padding: 35px;
+            margin-bottom: 35px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .section h2 {
+            color: #C41E3A;
+            margin-bottom: 25px;
+            font-size: 2em;
+            border-bottom: 3px solid #C41E3A;
+            padding-bottom: 15px;
+        }
+
+        .section h3 {
+            color: #2c3e50;
+            margin-top: 20px;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .section p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            font-size: 1.05em;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+
+        .info-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            border-left: 5px solid #C41E3A;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .info-card h3 {
+            color: #C41E3A;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            font-weight: bold;
+            color: #C41E3A;
+            flex: 0 0 40%;
+        }
+
+        .info-value {
+            color: #333;
+            flex: 1;
+            text-align: right;
+        }
+
+        .person-card {
+            background: white;
+            border: 2px solid #C41E3A;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(196, 30, 58, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .person-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(196, 30, 58, 0.2);
+        }
+
+        .person-avatar {
+            font-size: 3.5em;
+            margin-bottom: 15px;
+        }
+
+        .person-name {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #C41E3A;
+            margin-bottom: 8px;
+        }
+
+        .person-position {
+            color: #666;
+            font-size: 0.95em;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .contact-details {
+            background: #f8f9fa;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 0.9em;
+        }
+
+        .contact-details p {
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        .contact-details p:last-child {
+            margin-bottom: 0;
+        }
+
+        .staff-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+
+        .emergency-alert {
+            background: linear-gradient(135deg, #C41E3A 0%, #8B0000 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .emergency-alert h2 {
+            color: white;
+            border-bottom-color: white;
+            margin-bottom: 20px;
+        }
+
+        .emergency-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .emergency-item {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+
+        .emergency-icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .emergency-title {
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 8px;
+        }
+
+        .emergency-number {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #ffff00;
+        }
+
+        .complaint-form {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+            font-size: 1em;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #C41E3A;
+            box-shadow: 0 0 5px rgba(196, 30, 58, 0.3);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, #C41E3A 0%, #8B0000 100%);
+            color: white;
+            padding: 14px 40px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(196, 30, 58, 0.4);
+        }
+
+        .documents-section {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+
+        .document-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: white;
+            border-left: 4px solid #C41E3A;
+            margin-bottom: 12px;
+            border-radius: 5px;
+        }
+
+        .document-icon {
+            font-size: 1.8em;
+            margin-right: 15px;
+            color: #C41E3A;
+        }
+
+        .document-info h4 {
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .document-info p {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 0;
+        }
+
+        .apply-btn {
+            background: #C41E3A;
+            color: white;
+            padding: 8px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.9em;
+            transition: background 0.3s ease;
+            margin-left: auto;
+        }
+
+        .apply-btn:hover {
+            background: #8B0000;
+        }
+
+        .office-hours {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .hour-card {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #C41E3A;
+        }
+
+        .hour-label {
+            font-weight: bold;
+            color: #C41E3A;
+            margin-bottom: 5px;
+        }
+
+        .hour-time {
+            color: #333;
+        }
+
+        .success-message {
+            display: none;
+            background: #d4edda;
+            color: #155724;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 4px solid #155724;
+        }
+
+        .error-message {
+            display: none;
+            background: #f8d7da;
+            color: #721c24;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 4px solid #721c24;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .stat-box {
+            background: linear-gradient(135deg, #C41E3A 0%, #8B0000 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 0.95em;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .section {
+                padding: 20px;
+            }
+
+            .info-grid,
+            .staff-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏛️ Bijoy 24 Hall - Office</h1>
+            <p>Administration & Support Services</p>
+        </div>
+
+        <!-- Emergency Medical Alert -->
+        <div class="emergency-alert">
+            <h2>🚨 Emergency Medical Services</h2>
+            <div class="emergency-content">
+                <div class="emergency-item">
+                    <div class="emergency-icon">🚑</div>
+                    <div class="emergency-title">Ambulance Service</div>
+                    <div class="emergency-number">+880-1XXX-XXXXXX</div>
+                    <p style="margin-top: 8px; font-size: 0.9em;">Available 24/7 for medical emergencies</p>
+                </div>
+                <div class="emergency-item">
+                    <div class="emergency-icon">🏥</div>
+                    <div class="emergency-title">Campus Hospital</div>
+                    <div class="emergency-number">+880-1XXX-XXXXXX</div>
+                    <p style="margin-top: 8px; font-size: 0.9em;">Direct line to medical facilities</p>
+                </div>
+                <div class="emergency-item">
+                    <div class="emergency-icon">👨‍⚕️</div>
+                    <div class="emergency-title">Medical Officer</div>
+                    <div class="emergency-number">+880-1XXX-XXXXXX</div>
+                    <p style="margin-top: 8px; font-size: 0.9em;">On-campus medical support</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hall Office Overview -->
+        <div class="section">
+            <h2>📋 Hall Office Overview</h2>
+            <p>
+                The Hall Office is the administrative hub of Bijoy 24 Hall, responsible for managing all hall operations, 
+                student services, disciplinary matters, and coordination with university administration. Our dedicated team 
+                works tirelessly to ensure a safe, welcoming, and conducive environment for all residents.
+            </p>
+            <p>
+                The office handles student admissions to the hall, hostel allocations, complaint resolutions, emergency 
+                support, and maintains communication between residents and the university administration. We are committed 
+                to providing professional and timely services to all our residents.
+            </p>
+
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-number">1,250+</div>
+                    <div class="stat-label">Hall Residents</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Staff Members</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Support Available</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Complaint Resolution</div>
+                </div>
+            </div>
+
+            <div class="office-hours">
+                <div class="hour-card">
+                    <div class="hour-label">🏢 Office Hours</div>
+                    <div class="hour-time">9:00 AM - 5:00 PM</div>
+                </div>
+                <div class="hour-card">
+                    <div class="hour-label">📱 Emergency Support</div>
+                    <div class="hour-time">24/7 Available</div>
+                </div>
+                <div class="hour-card">
+                    <div class="hour-label">📧 Email Response</div>
+                    <div class="hour-time">Within 24 hours</div>
+                </div>
+                <div class="hour-card">
+                    <div class="hour-label">📍 Location</div>
+                    <div class="hour-time">Ground Floor</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hall Provost -->
+        <div class="section">
+            <h2>👨‍💼 Hall Provost</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 30px;">
+                <div class="person-card">
+                    <div class="person-avatar">🎓</div>
+                    <div class="person-name">Dr. Prof. Muhammad Ahmed</div>
+                    <div class="person-position">Hall Provost</div>
+                    <div class="contact-details">
+                        <p><strong>Designation:</strong><br>Provost, Bijoy 24 Hall</p>
+                        <p><strong>Department:</strong><br>Civil Engineering</p>
+                        <p><strong>Office:</strong><br>Room 100, Hall Office</p>
+                        <p><strong>Email:</strong><br>provost@bijoy24hall.com</p>
+                        <p><strong>Phone:</strong><br>+880-1XXXX-XXXXX</p>
+                        <p><strong>Mobile:</strong><br>+880-1XXXX-XXXXX</p>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <h3>📝 Responsibilities</h3>
+                    <div style="font-size: 0.95em; color: #555;">
+                        <p>✓ Overall administration and management of the hall</p>
+                        <p>✓ Policy formulation and implementation</p>
+                        <p>✓ Discipline and conduct matters</p>
+                        <p>✓ Budget management and financial matters</p>
+                        <p>✓ Liaison with university administration</p>
+                        <p>✓ Hostel allocation and accommodation</p>
+                        <p>✓ Emergency management and crisis handling</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Assistant Provosts -->
+        <div class="section">
+            <h2>👨‍✈️ Assistant Provosts</h2>
+            <p style="margin-bottom: 25px;">
+                Our team of Assistant Provosts assists in the smooth functioning of the hall and handles various administrative 
+                matters. They are responsible for day-to-day operations and student support services.
+            </p>
+            <div class="staff-grid">
+                <div class="person-card">
+                    <div class="person-avatar">👨‍🏫</div>
+                    <div class="person-name">Prof. Rajib Hassan</div>
+                    <div class="person-position">Assistant Provost (Academic)</div>
+                    <div class="contact-details">
+                        <p><strong>Phone:</strong><br>+880-1XXXX-XXXXX</p>
+                        <p><strong>Email:</strong><br>academic@bijoy24hall.com</p>
+                        <p><strong>Office:</strong><br>Room 105</p>
+                        <p style="margin-top: 10px; color: #C41E3A; font-weight: bold;">
+                            Mon-Fri: 10 AM - 4 PM
+                        </p>
+                    </div>
+                </div>
+
+                <div class="person-card">
+                    <div class="person-avatar">⚡</div>
+                    <div class="person-name">Dr. Fatima Khan</div>
+                    <div class="person-position">Assistant Provost (Welfare)</div>
+                    <div class="contact-details">
+                        <p><strong>Phone:</strong><br>+880-1XXXX-XXXXX</p>
+                        <p><strong>Email:</strong><br>welfare@bijoy24hall.com</p>
+                        <p><strong>Office:</strong><br>Room 107</p>
+                        <p style="margin-top: 10px; color: #C41E3A; font-weight: bold;">
+                            Mon-Fri: 10 AM - 4 PM
+                        </p>
+                    </div>
+                </div>
+
+                <div class="person-card">
+                    <div class="person-avatar">📋</div>
+                    <div class="person-name">Md. Kamal Hossain</div>
+                    <div class="person-position">Assistant Provost (Discipline)</div>
+                    <div class="contact-details">
+                        <p><strong>Phone:</strong><br>+880-1XXXX-XXXXX</p>
+                        <p><strong>Email:</strong><br>discipline@bijoy24hall.com</p>
+                        <p><strong>Office:</strong><br>Room 110</p>
+                        <p style="margin-top: 10px; color: #C41E3A; font-weight: bold;">
+                            Mon-Fri: 10 AM - 4 PM
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hall Staff -->
+        <div class="section">
+            <h2>👥 Hall Staff & Support Team</h2>
+            <p style="margin-bottom: 25px;">
+                Our dedicated support staff ensures smooth daily operations and provides assistance with all hall-related matters.
+            </p>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>🏠 Hall Manager</h3>
+                    <div class="info-row">
+                        <span class="info-label">Name:</span>
+                        <span class="info-value">Mr. Arif Rahman</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Phone:</span>
+                        <span class="info-value">+880-1XXXX-XXXXX</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Email:</span>
+                        <span class="info-value">manager@bijoy24hall.com</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Office:</span>
+                        <span class="info-value">Room 102</span>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <h3>📞 Receptionist</h3>
+                    <div class="info-row">
+                        <span class="info-label">Name:</span>
+                        <span class="info-value">Ms. Nadia Islam</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Phone:</span>
+                        <span class="info-value">+880-1XXXX-XXXXX</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Email:</span>
+                        <span class="info-value">reception@bijoy24hall.com</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Hours:</span>
+                        <span class="info-value">9 AM - 5 PM</span>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <h3>🔧 Maintenance Supervisor</h3>
+                    <div class="info-row">
+                        <span class="info-label">Name:</span>
+                        <span class="info-value">Mr. Hassan Ali</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Phone:</span>
+                        <span class="info-value">+880-1XXXX-XXXXX</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Emergency:</span>
+                        <span class="info-value">+880-1XXXX-XXXXX</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Office:</span>
+                        <span class="info-value">Room 103</span>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <h3>🔐 Security Chief</h3>
+                    <div class="info-row">
+                        <span class="info-label">Name:</span>
+                        <span class="info-value">Mr. Saiful Islam</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Phone:</span>
+                        <span class="info-value">+880-1XXXX-XXXXX</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">24/7 Hotline:</span>
+                        <span class="info-value">+880-1XXXX-XXXXX</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Office:</span>
+                        <span class="info-value">Gate House</span>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <h3>👨‍🍳 Dining Manager</h3>
+                    <div class="info-row">
+                        <span class="info-label">Name:</span>
+                        <span class="info-value">Mr. Rashed Khan</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Phone:</span>
+                        <span class="info-value">+880-1XXXX-XXXXX</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Email:</span>
+                        <span class="info-value">dining@bijoy24hall.com</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Office:</span>
+                        <span class="info-value">Dining Hall</span>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <h3>🧺 Housekeeping Supervisor</h3>
+                    <div class="info-row">
+                        <span class="info-label">Name:</span>
+                        <span class="info-value">Ms. Sharmin Begum</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Phone:</span>
+                        <span class="info-value">+880-1XXXX-XXXXX</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Email:</span>
+                        <span class="info-value">cleaning@bijoy24hall.com</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Office:</span>
+                        <span class="info-value">Room 104</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Complaint Section -->
+        <div class="section">
+            <h2>📝 File a Complaint</h2>
+            <p>
+                Have an issue or concern? We're here to listen and help resolve it quickly. Please use the form below to 
+                lodge a formal complaint. We ensure confidentiality and timely resolution of all complaints.
+            </p>
+
+            <div id="successMessage" class="success-message"></div>
+            <div id="errorMessage" class="error-message"></div>
+
+            <div class="complaint-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="complaintName">Your Name *</label>
+                        <input type="text" id="complaintName" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="complaintId">Student ID *</label>
+                        <input type="text" id="complaintId" placeholder="Enter your ID" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="complaintEmail">Email Address *</label>
+                        <input type="email" id="complaintEmail" placeholder="your.email@university.edu" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="complaintPhone">Phone Number *</label>
+                        <input type="tel" id="complaintPhone" placeholder="Your contact number" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="complaintType">Complaint Category *</label>
+                    <select id="complaintType" required>
+                        <option value="">-- Select a category --</option>
+                        <option value="maintenance">Maintenance & Repair</option>
+                        <option value="cleanliness">Cleanliness & Hygiene</option>
+                        <option value="noise">Noise & Disturbance</option>
+                        <option value="behavior">Student Behavior & Conduct</option>
+                        <option value="security">Security & Safety</option>
+                        <option value="dining">Dining Services</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="complaintDetail">Detailed Description *</label>
+                    <textarea id="complaintDetail" placeholder="Please describe your complaint in detail..." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="complaintRoom">Room/Block Number (if applicable)</label>
+                    <input type="text" id="complaintRoom" placeholder="e.g., A-301">
+                </div>
+
+                <button class="btn-submit" onclick="submitComplaint()">📤 Submit Complaint</button>
+            </div>
+
+            <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin-top: 20px; border-left: 4px solid #C41E3A;">
+                <h3 style="color: #C41E3A; margin-bottom: 10px;">📌 Complaint Policy</h3>
+                <p style="margin-bottom: 8px; color: #555;">
+                    ✓ All complaints are confidential and will be treated with utmost care
+                </p>
+                <p style="margin-bottom: 8px; color: #555;">
+                    ✓ Response within 48 hours for urgent matters
+                </p>
+                <p style="margin-bottom: 8px; color: #555;">
+                    ✓ Investigation and resolution within 2 weeks
+                </p>
+                <p style="color: #555;">
+                    ✓ Complainant will receive updates on the status of their complaint
+                </p>
+            </div>
+        </div>
+
+        <!-- Documents & Applications -->
+        <div class="section">
+            <h2>📄 Required Documents & Applications</h2>
+            <p style="margin-bottom: 25px;">
+                Below are the common documents and applications needed for various hall-related purposes. Click on 'Apply' 
+                to access or download the required forms.
+            </p>
+
+            <div class="documents-section">
+                <h3 style="color: #333; margin-bottom: 20px;">📋 Hostel Accommodation Documents</h3>
+
+                <div class="document-item">
+                    <div class="document-icon">📝</div>
+                    <div class="document-info">
+                        <h4>Hostel Admission Form</h4>
+                        <p>Required for new hostel admissions. Includes personal information and emergency contacts.</p>
+                    </div>
+                    <button class="apply-btn" onclick="applyDocument('Hostel Admission Form')">Apply</button>
+                </div>
+
+                <div class="document-item">
+                    <div class="document-icon">🆔</div>
+                    <div class="document-info">
+                        <h4>Identity Verification Form</h4>
+                        <p>Government ID copy and verification form for security purposes.</p>
+                    </div>
+                    <button class="apply-btn" onclick="applyDocument('Identity Verification Form')">Apply</button>
+                </div>
+
+                <div class="document-item">
+                    <div class="document-icon">📜</div>
+                    <div class="document-info">
+                        <h4>Medical Certificate</h4>
+                        <p>Health certificate and immunization records required for hostel residency.</p>
+                    </div>
+                    <button class="apply-btn" onclick="applyDocument('Medical Certificate')">Apply</button>
+                </div>
+
+                <h3 style="color: #333; margin: 25px 0 20px 0;">📑 Administrative Documents</h3>
+
+                <div class="document-item">
+                    <div class="document-icon">📋</div>
+                    <div class="document-info">
+                        <h4>Character Certificate</h4>
+                        <p>Required for various purposes. Can be obtained from the Hall Office.</p>
+                    </div>
+                    <button class="apply-btn" onclick="applyDocument('Character Certificate')">Apply</button>
+                </div>
+
+                <div class="document-item">
+                    <div class="document-icon">💼</div>
+                    <div class="document-info">
+                        <h4>Leave Application Form</h4>
+                        <p>For requesting leave from hostel or extended absence during semester.</p>
+                    </div>
+                    <button class="apply-btn" onclick="applyDocument('Leave Application')">Apply</button>
+                </div>
+
+                <div class="document-item">
+                    <div class="document-icon">👥</div>
+                    <div class="document-info">
+                        <h4>Visitor Pass Application</h4>
+                        <p>For guest visits to the hostel. Requires prior approval from hall office.</p>
+                    </div>
+                    <button class="apply-btn" onclick="applyDocument('Visitor Pass Application')">Apply</button>
+                </div>
+
+                <h3 style="color: #333; margin: 25px 0 20px 0;">💰 Financial Documents</h3>
+
+                <div class="document-item">
+                    <div class="document-icon">🏦</div>
+                    <div class="document-info">
+                        <h4>Fee Payment Receipt</h4>
+                        <p>Hostel fee payment confirmation and receipt download.</p>
+                    </div>
+                    <button class="apply-btn" onclick="applyDocument('Fee Receipt')">Apply</button>
+                </div>
+
+                <div class="document-item">
+                    <div class="document-icon">💳</div>
+                    <div class="document-info">
+                        <h4>Fee Waiver Application</h4>
+                        <p>For economically disadvantaged students seeking fee reduction.</p>
+                    </div>
+                    <button class="apply-btn" onclick="applyDocument('Fee Waiver')">Apply</button>
+                </div>
+
+                <div class="document-item">
+                    <div class="document-icon">📊</div>
+                    <div class="document-info">
+                        <h4>Accommodation Refund Request</h4>
+                        <p>For requesting refund of hostel fees (subject to policies).</p>
+                    </div>
+                    <button class="apply-btn" onclick="applyDocument('Refund Request')">Apply</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Information Summary -->
+        <div class="section" style="background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);">
+            <h2>📞 Quick Contact Summary</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>🏢 Hall Office</h3>
+                    <div class="info-row">
+                        <span class="info-label">Address:</span>
+                        <span class="info-value">Ground Floor, Main Building</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Email:</span>
+                        <span class="info-value">office@bijoy24hall.com</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Phone:</span>
+                        <span class="info-value">+880-1XXXX-XXXXX</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Hours:</span>
+                        <span class="info-value">9 AM - 5 PM</span>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <h3>🆘 Emergency Helpline</h3>
+                    <div class="info-row">
+                        <span class="info-label">24/7 Helpline:</span>
+                        <span class="info-value">+880-1XXXX-XXXXX</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Security:</span>
+                        <span class="info-value">+880-1XXXX-XXXXX</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Ambulance:</span>
+                        <span class="info-value">+880-1XXXX-XXXXX</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Gate House:</span>
+                        <span class="info-value">+880-1XXXX-XXXXX</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Submit Complaint
+        function submitComplaint() {
+            const name = document.getElementById('complaintName').value;
+            const id = document.getElementById('complaintId').value;
+            const email = document.getElementById('complaintEmail').value;
+            const phone = document.getElementById('complaintPhone').value;
+            const type = document.getElementById('complaintType').value;
+            const detail = document.getElementById('complaintDetail').value;
+
+            if (!name || !id || !email || !phone || !type || !detail) {
+                showError('Please fill in all required fields.');
+                return;
+            }
+
+            // Simulate form submission
+            const successDiv = document.getElementById('successMessage');
+            successDiv.innerHTML = `
+                ✅ <strong>Complaint Submitted Successfully!</strong><br><br>
+                Your complaint has been received and assigned a reference number.<br>
+                <strong>Reference #: BIJOY-${Date.now()}</strong><br><br>
+                We will contact you at ${email} or ${phone} within 48 hours.<br>
+                Thank you for bringing this to our attention.
+            `;
+            successDiv.style.display = 'block';
+            document.getElementById('errorMessage').style.display = 'none';
+
+            // Reset form
+            setTimeout(() => {
+                document.getElementById('complaintName').value = '';
+                document.getElementById('complaintId').value = '';
+                document.getElementById('complaintEmail').value = '';
+                document.getElementById('complaintPhone').value = '';
+                document.getElementById('complaintType').value = '';
+                document.getElementById('complaintDetail').value = '';
+                document.getElementById('complaintRoom').value = '';
+                successDiv.style.display = 'none';
+            }, 4000);
+        }
+
+        // Show Error
+        function showError(message) {
+            const errorDiv = document.getElementById('errorMessage');
+            errorDiv.textContent = '❌ ' + message;
+            errorDiv.style.display = 'block';
+            document.getElementById('successMessage').style.display = 'none';
+            setTimeout(() => errorDiv.style.display = 'none', 3000);
+        }
+
+        // Apply Document
+        function applyDocument(docName) {
+            alert(`📋 Application for: ${docName}\n\nPlease proceed to the Hall Office or submit online.\n\nYou will be contacted shortly with further instructions.`);
+        }
+    </script>
+</body>
+</html>

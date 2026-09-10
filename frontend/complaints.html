@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complaints - Bijoy 24 Hall</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f5f7fb;
+        }
+
+        .dashboard-layout {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 280px;
+            background: linear-gradient(180deg, #1f2937 0%, #111827 100%);
+            color: white;
+            padding: 24px 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .logo-box {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .logo h2 {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .nav {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            flex: 1;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: #9ca3af;
+            padding: 12px 16px;
+            border-radius: 10px;
+            transition: all 0.2s;
+            font-weight: 500;
+        }
+
+        .nav a:hover, .nav a.active {
+            background: rgba(79, 70, 229, 0.2);
+            color: white;
+        }
+
+        .logout-btn {
+            margin-top: auto;
+            background: #ef4444;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .logout-btn:hover {
+            background: #dc2626;
+        }
+
+        .main {
+            flex: 1;
+        }
+
+        .topbar {
+            background: white;
+            padding: 16px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        #userInitial {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-weight: bold;
+        }
+
+        .content {
+            padding: 32px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Complaint Form */
+        .complaint-form-container {
+            background: white;
+            border-radius: 20px;
+            padding: 24px;
+            margin-bottom: 32px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .complaint-form-container h2 {
+            margin-bottom: 20px;
+            color: #1f2937;
+            font-size: 1.25rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #374151;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #4f46e5;
+            ring: 2px solid rgba(79,70,229,0.1);
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Complaints List */
+        .complaints-list-container {
+            background: white;
+            border-radius: 20px;
+            padding: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .complaints-list-container h2 {
+            margin-bottom: 20px;
+            color: #1f2937;
+            font-size: 1.25rem;
+        }
+
+        .complaint-card {
+            background: #f9fafb;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 16px;
+            border-left: 4px solid;
+        }
+
+        .complaint-card.pending {
+            border-left-color: #f59e0b;
+        }
+        .complaint-card.in_progress {
+            border-left-color: #3b82f6;
+        }
+        .complaint-card.resolved {
+            border-left-color: #10b981;
+        }
+        .complaint-card.rejected {
+            border-left-color: #ef4444;
+        }
+
+        .complaint-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+        }
+
+        .complaint-title {
+            font-weight: 700;
+            color: #1f2937;
+            font-size: 1rem;
+        }
+
+        .complaint-status {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        .status-pending {
+            background: #fef3c7;
+            color: #92400e;
+        }
+        .status-in_progress {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+        .status-resolved {
+            background: #d1fae5;
+            color: #065f46;
+        }
+        .status-rejected {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .complaint-meta {
+            font-size: 0.75rem;
+            color: #6b7280;
+            margin-bottom: 8px;
+        }
+
+        .complaint-description {
+            color: #4b5563;
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+        }
+
+        .admin-note {
+            background: #e0e7ff;
+            padding: 8px 12px;
+            border-radius: 8px;
+            margin-top: 8px;
+            font-size: 0.8rem;
+        }
+
+        .admin-note strong {
+            color: #3730a3;
+        }
+
+        .empty-state {
+            text-align: center;
+            color: #9ca3af;
+            padding: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-layout {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+            }
+            .content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="dashboard-layout">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="logo">
+            <div class="logo-box">B24</div>
+            <h2>Bijoy 24 Hall</h2>
+        </div>
+        <nav class="nav">
+            <a href="student-dashboard.html">📊 Dashboard</a>
+            <a href="admission.html">📝 Admission</a>
+            <a href="complaints.html" class="active">💬 Complaints</a>
+            <a href="dining.html">🍽️ Dining</a>
+            <a href="library.html">📚 Library</a>
+        </nav>
+        <button class="logout-btn" id="logoutBtn">🚪 Logout</button>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+        <div class="topbar">
+            <div>👋 Welcome, <span id="userName">Student</span>!</div>
+            <div id="userInitial">S</div>
+        </div>
+
+        <div class="content">
+            <!-- Submit Complaint Form -->
+            <div class="complaint-form-container">
+                <h2>📝 Submit New Complaint</h2>
+                <form id="complaintForm">
+                    <div class="form-group">
+                        <label>Title *</label>
+                        <input type="text" id="complaintTitle" required placeholder="Brief title of your complaint">
+                    </div>
+                    <div class="form-group">
+                        <label>Category *</label>
+                        <select id="complaintCategory" required>
+                            <option value="">Select Category</option>
+                            <option value="Maintenance">🔧 Maintenance (Plumbing, Electrical, Furniture)</option>
+                            <option value="Cleaning">🧹 Cleaning & Sanitation</option>
+                            <option value="Dining">🍽️ Dining & Food Quality</option>
+                            <option value="Security">🛡️ Security Issue</option>
+                            <option value="Staff Behavior">👔 Staff Behavior</option>
+                            <option value="Roommate">👤 Roommate Issue</option>
+                            <option value="Other">📌 Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Description *</label>
+                        <textarea id="complaintDescription" rows="5" required placeholder="Please provide detailed information about your issue..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">📤 Submit Complaint</button>
+                </form>
+            </div>
+
+            <!-- My Complaints List -->
+            <div class="complaints-list-container">
+                <h2>📋 My Complaints</h2>
+                <div id="complaintsList">
+                    <div class="empty-state">Loading your complaints...</div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script src="complaints.js"></script>
+</body>
+</html>

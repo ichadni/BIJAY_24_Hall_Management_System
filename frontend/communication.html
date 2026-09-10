@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bijoy 24 Hall - Communication Hub</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #8B0000 0%, #C41E3A 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+            padding: 40px 20px;
+        }
+
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .info-banner {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        .info-banner p {
+            color: #555;
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        .category-title {
+            font-size: 2em;
+            color: white;
+            margin-top: 40px;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid white;
+        }
+
+        .groups-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .group-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .group-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .group-header {
+            padding: 25px;
+            background: linear-gradient(135deg, #C41E3A 0%, #8B0000 100%);
+            color: white;
+        }
+
+        .group-icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .group-name {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .group-type {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .group-body {
+            padding: 25px;
+        }
+
+        .group-info {
+            margin-bottom: 20px;
+        }
+
+        .info-label {
+            font-weight: bold;
+            color: #C41E3A;
+            font-size: 0.95em;
+            margin-bottom: 5px;
+        }
+
+        .info-value {
+            color: #555;
+            font-size: 0.95em;
+            margin-bottom: 10px;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            padding: 8px;
+            background: #f8f9fa;
+            border-radius: 5px;
+        }
+
+        .info-row span:first-child {
+            font-weight: bold;
+            color: #C41E3A;
+        }
+
+        .info-row span:last-child {
+            color: #333;
+        }
+
+        .group-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-left: 4px solid #C41E3A;
+            border-radius: 5px;
+        }
+
+        .group-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .btn-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: white;
+        }
+
+        .btn-facebook {
+            background: #1877F2;
+        }
+
+        .btn-facebook:hover {
+            background: #0a66c2;
+            transform: translateX(5px);
+        }
+
+        .btn-whatsapp {
+            background: #25D366;
+        }
+
+        .btn-whatsapp:hover {
+            background: #1faa56;
+            transform: translateX(5px);
+        }
+
+        .btn-notice {
+            background: #FF6B6B;
+        }
+
+        .btn-notice:hover {
+            background: #ee5a52;
+            transform: translateX(5px);
+        }
+
+        .btn-copy {
+            background: #667eea;
+            padding: 8px 15px;
+            font-size: 0.85em;
+            flex: 1;
+        }
+
+        .btn-copy:hover {
+            background: #764ba2;
+        }
+
+        .guidelines {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .guidelines h2 {
+            color: #C41E3A;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            border-bottom: 3px solid #C41E3A;
+            padding-bottom: 10px;
+        }
+
+        .guidelines-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .guideline-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #C41E3A;
+        }
+
+        .guideline-item h3 {
+            color: #C41E3A;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .guideline-item p {
+            color: #666;
+            line-height: 1.5;
+            font-size: 0.95em;
+        }
+
+        .quick-links {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .quick-links h2 {
+            color: #C41E3A;
+            margin-bottom: 25px;
+            font-size: 1.8em;
+            border-bottom: 3px solid #C41E3A;
+            padding-bottom: 10px;
+        }
+
+        .quick-links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .quick-link-card {
+            background: linear-gradient(135deg, #C41E3A 0%, #8B0000 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .quick-link-card:hover {
+            transform: scale(1.05);
+        }
+
+        .quick-link-icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .quick-link-title {
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .quick-link-info {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .important-notice {
+            background: linear-gradient(135deg, #714141 0%, #8f555f 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .important-notice h2 {
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        .important-notice p {
+            line-height: 1.6;
+        }
+
+        .copy-notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #2ecc71;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            display: none;
+            z-index: 1000;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .members-info {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .category-title {
+                font-size: 1.5em;
+            }
+
+            .groups-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>💬 Bijoy 24 Hall Communication Hub</h1>
+            <p>Stay Connected with Your Hall Community</p>
+        </div>
+
+        <!-- Important Notice -->
+        <div class="important-notice">
+            <h2>📢 Important Notice</h2>
+            <p>
+                All official announcements, updates, and notices related to hall activities are shared through our 
+                official communication channels. Make sure you're a member of all relevant groups to stay updated about 
+                important dates, events, and hall-related information.
+            </p>
+        </div>
+
+        <!-- Info Banner -->
+        <div class="info-banner">
+            <p>
+                🔔 Welcome to our central communication platform! Join our various groups to stay connected with hall mates, 
+                get latest updates, participate in events, and share experiences. Click the links below to join any group.
+            </p>
+        </div>
+
+        <!-- Facebook Groups -->
+        <div class="category-title">👥 Facebook Groups</div>
+        <div class="groups-grid">
+            <!-- Main Hall Group -->
+            <div class="group-card">
+                <div class="group-header">
+                    <div class="group-icon">f</div>
+                    <div class="group-name">Bijoy 24 Hall Main</div>
+                    <div class="group-type">Official Hall Community</div>
+                </div>
+                <div class="group-body">
+                    <div class="group-description">
+                        The main Facebook group for all hall residents. Share experiences, photos, stories, and connect 
+                        with fellow residents. Daily discussions about hall life and community bonding.
+                    </div>
+                    
+                    <div class="members-info">
+                        <div class="info-row">
+                            <span>👥 Members:</span>
+                            <span>1,250+</span>
+                        </div>
+                        <div class="info-row">
+                            <span>👤 Admin:</span>
+                            <span>Provost</span>
+                        </div>
+                        <div class="info-row">
+                            <span>📊 Type:</span>
+                            <span>Public</span>
+                        </div>
+                        <div class="info-row">
+                            <span>⏰ Created:</span>
+                            <span>2019</span>
+                        </div>
+                    </div>
+
+                    <div class="group-links">
+                        <a href="https://www.facebook.com/groups/bijoy24hallsust" target="_blank" class="btn-link btn-facebook">
+                            👉 Join Facebook Group
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- General Discussion Group -->
+            <div class="group-card">
+                <div class="group-header">
+                    <div class="group-icon">f</div>
+                    <div class="group-name">Bijoy 24 - General Chat</div>
+                    <div class="group-type">Casual Discussions</div>
+                </div>
+                <div class="group-body">
+                    <div class="group-description">
+                        Casual discussions, memes, jokes, and fun conversations. Share your daily thoughts, funny moments, 
+                        and connect with friends. Keep it friendly and respectful!
+                    </div>
+                    
+                    <div class="members-info">
+                        <div class="info-row">
+                            <span>👥 Members:</span>
+                            <span>980+</span>
+                        </div>
+                        <div class="info-row">
+                            <span>👤 Admins:</span>
+                            <span>5</span>
+                        </div>
+                        <div class="info-row">
+                            <span>📊 Type:</span>
+                            <span>Public</span>
+                        </div>
+                        <div class="info-row">
+                            <span>🔥 Activity:</span>
+                            <span>Very High</span>
+                        </div>
+                    </div>
+
+                    <div class="group-links">
+                        <a href="https://www.facebook.com/groups/bijoy24generalchat" target="_blank" class="btn-link btn-facebook">
+                            👉 Join Facebook Group
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Event & Announcement Group -->
+            <div class="group-card">
+                <div class="group-header">
+                    <div class="group-icon">f</div>
+                    <div class="group-name">Bijoy 24 Events & News</div>
+                    <div class="group-type">Official Announcements</div>
+                </div>
+                <div class="group-body">
+                    <div class="group-description">
+                        Official events, tournaments, cultural programs, and important announcements. Get updates about 
+                        cricket tournaments, sports day, annual events, and hall activities.
+                    </div>
+                    
+                    <div class="members-info">
+                        <div class="info-row">
+                            <span>👥 Members:</span>
+                            <span>1,100+</span>
+                        </div>
+                        <div class="info-row">
+                            <span>👤 Admin:</span>
+                            <span>Events Team</span>
+                        </div>
+                        <div class="info-row">
+                            <span>📊 Type:</span>
+                            <span>Public</span>
+                        </div>
+                        <div class="info-row">
+                            <span>🎯 Purpose:</span>
+                            <span>Announcements</span>
+                        </div>
+                    </div>
+
+                    <div class="group-links">
+                        <a href="https://www.facebook.com/groups/bijoy24events" target="_blank" class="btn-link btn-facebook">
+                            👉 Join Facebook Group
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Alumni Group -->
+            <div class="group-card">
+                <div class="group-header">
+                    <div class="group-icon">f</div>
+                    <div class="group-name">Bijoy 24 Alumni</div>
+                    <div class="group-type">Alumni Community</div>
+                </div>
+                <div class="group-body">
+                    <div class="group-description">
+                        Connect with former hall residents! Share your journey after graduation, mentor current students, 
+                        and strengthen the alumni network. Annual alumni meet organized.
+                    </div>
+                    
+                    <div class="members-info">
+                        <div class="info-row">
+                            <span>👥 Members:</span>
+                            <span>2,500+</span>
+                        </div>
+                        <div class="info-row">
+                            <span>👤 Admin:</span>
+                            <span>Alumni Assoc.</span>
+                        </div>
+                        <div class="info-row">
+                            <span>📊 Type:</span>
+                            <span>Closed</span>
+                        </div>
+                        <div class="info-row">
+                            <span>🔗 Network:</span>
+                            <span>Global</span>
+                        </div>
+                    </div>
+
+                    <div class="group-links">
+                        <a href="https://www.facebook.com/groups/bijoy24alumni" target="_blank" class="btn-link btn-facebook">
+                            👉 Join Facebook Group
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sports & Recreation -->
+            <div class="group-card">
+                <div class="group-header">
+                    <div class="group-icon">f</div>
+                    <div class="group-name">Bijoy 24 Sports</div>
+                    <div class="group-type">Sports & Gaming</div>
+                </div>
+                <div class="group-body">
+                    <div class="group-description">
+                        Dedicated to sports, gaming, and recreational activities. Football, cricket, badminton, gaming 
+                        tournaments, and fitness challenges. Join team registrations here!
+                    </div>
+                    
+                    <div class="members-info">
+                        <div class="info-row">
+                            <span>👥 Members:</span>
+                            <span>850+</span>
+                        </div>
+                        <div class="info-row">
+                            <span>👤 Admin:</span>
+                            <span>Sports Secretary</span>
+                        </div>
+                        <div class="info-row">
+                            <span>📊 Type:</span>
+                            <span>Public</span>
+                        </div>
+                        <div class="info-row">
+                            <span>🎮 Focus:</span>
+                            <span>Sports & Gaming</span>
+                        </div>
+                    </div>
+
+                    <div class="group-links">
+                        <a href="https://www.facebook.com/groups/bijoy24sports" target="_blank" class="btn-link btn-facebook">
+                            👉 Join Facebook Group
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Academics Support -->
+            <div class="group-card">
+                <div class="group-header">
+                    <div class="group-icon">f</div>
+                    <div class="group-name">Bijoy 24 Academics</div>
+                    <div class="group-type">Study & Learning</div>
+                </div>
+                <div class="group-body">
+                    <div class="group-description">
+                        Share lecture notes, study tips, exam guidance, and academic resources. Help each other with 
+                        coursework and prepare for exams together. Peer tutoring available!
+                    </div>
+                    
+                    <div class="members-info">
+                        <div class="info-row">
+                            <span>👥 Members:</span>
+                            <span>920+</span>
+                        </div>
+                        <div class="info-row">
+                            <span>👤 Admins:</span>
+                            <span>3</span>
+                        </div>
+                        <div class="info-row">
+                            <span>📊 Type:</span>
+                            <span>Public</span>
+                        </div>
+                        <div class="info-row">
+                            <span>📚 Focus:</span>
+                            <span>Education</span>
+                        </div>
+                    </div>
+
+                    <div class="group-links">
+                        <a href="https://www.facebook.com/groups/bijoy24academics" target="_blank" class="btn-link btn-facebook">
+                            👉 Join Facebook Group
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- WhatsApp Groups -->
+        <div class="category-title">💚 WhatsApp Groups</div>
+        <div class="groups-grid">
+            <!-- Floor WhatsApp Groups (Examples) -->
+            <div class="group-card">
+                <div class="group-header">
+                    <div class="group-icon">W</div>
+                    <div class="group-name">Floor 1 - WhatsApp</div>
+                    <div class="group-type">Floor Community</div>
+                </div>
+                <div class="group-body">
+                    <div class="group-description">
+                        WhatsApp group for Floor 1 residents. Quick updates, urgent announcements, and instant 
+                        communication. Active 24/7 for emergencies.
+                    </div>
+                    
+                    <div class="members-info">
+                        <div class="info-row">
+                            <span>👥 Members:</span>
+                            <span>45</span>
+                        </div>
+                        <div class="info-row">
+                            <span>👤 Admin:</span>
+                            <span>Floor Rep</span>
+                        </div>
+                        <div class="info-row">
+                            <span>📱 Type:</span>
+                            <span>WhatsApp</span>
+                        </div>
+                        <div class="info-row">
+                            <span>⚡ Response:</span>
+                            <span>Instant</span>
+                        </div>
+                    </div>
+
+                    <div class="group-links">
+                        <a href="https://chat.whatsapp.com/bijoy24floor1" target="_blank" class="btn-link btn-whatsapp">
+                            💚 Join WhatsApp Group
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Notice WhatsApp Group -->
+            <div class="group-card">
+                <div class="group-header">
+                    <div class="group-icon">⚠️</div>
+                    <div class="group-name">Bijoy 24 Notices</div>
+                    <div class="group-type">Official Notices</div>
+                </div>
+                <div class="group-body">
+                    <div class="group-description">
+                        Critical announcements, maintenance notices, emergency alerts, and important updates. 
+                        Everyone must join this group. Notification-only group.
+                    </div>
+                    
+                    <div class="members-info">
+                        <div class="info-row">
+                            <span>👥 Members:</span>
+                            <span>1,200+</span>
+                        </div>
+                        <div class="info-row">
+                            <span>👤 Admin:</span>
+                            <span>Provost Office</span>
+                        </div>
+                        <div class="info-row">
+                            <span>📱 Type:</span>
+                            <span>WhatsApp</span>
+                        </div>
+                        <div class="info-row">
+                            <span>🚨 Priority:</span>
+                            <span>Critical</span>
+                        </div>
+                    </div>
+
+                    <div class="group-links">
+                        <a href="https://chat.whatsapp.com/bijoy24notices" target="_blank" class="btn-link btn-notice">
+                            📢 Join Notice Group
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sports WhatsApp Group -->
+            <div class="group-card">
+                <div class="group-header">
+                    <div class="group-icon">⚽</div>
+                    <div class="group-name">Sports & Events</div>
+                    <div class="group-type">Sports Updates</div>
+                </div>
+                <div class="group-body">
+                    <div class="group-description">
+                        Quick updates on sports events, match schedules, tournament registrations, and game results. 
+                        Immediate communication for sports-related matters.
+                    </div>
+                    
+                    <div class="members-info">
+                        <div class="info-row">
+                            <span>👥 Members:</span>
+                            <span>380+</span>
+                        </div>
+                        <div class="info-row">
+                            <span>👤 Admin:</span>
+                            <span>Sports Sec.</span>
+                        </div>
+                        <div class="info-row">
+                            <span>📱 Type:</span>
+                            <span>WhatsApp</span>
+                        </div>
+                        <div class="info-row">
+                            <span>🎯 Focus:</span>
+                            <span>Sports Only</span>
+                        </div>
+                    </div>
+
+                    <div class="group-links">
+                        <a href="https://chat.whatsapp.com/bijoy24sports" target="_blank" class="btn-link btn-whatsapp">
+                            💚 Join WhatsApp Group
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Academics Support WhatsApp -->
+            <div class="group-card">
+                <div class="group-header">
+                    <div class="group-icon">📚</div>
+                    <div class="group-name">Study Group</div>
+                    <div class="group-type">Academics</div>
+                </div>
+                <div class="group-body">
+                    <div class="group-description">
+                        Quick academic support, doubt clearing, study material sharing, and exam tips. 
+                        Connect with peers for instant help on assignments and projects.
+                    </div>
+                    
+                    <div class="members-info">
+                        <div class="info-row">
+                            <span>👥 Members:</span>
+                            <span>520+</span>
+                        </div>
+                        <div class="info-row">
+                            <span>👤 Admins:</span>
+                            <span>2</span>
+                        </div>
+                        <div class="info-row">
+                            <span>📱 Type:</span>
+                            <span>WhatsApp</span>
+                        </div>
+                        <div class="info-row">
+                            <span>💡 Purpose:</span>
+                            <span>Learning</span>
+                        </div>
+                    </div>
+
+                    <div class="group-links">
+                        <a href="https://chat.whatsapp.com/bijoy24study" target="_blank" class="btn-link btn-whatsapp">
+                            💚 Join WhatsApp Group
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Placement & Internship -->
+            <div class="group-card">
+                <div class="group-header">
+                    <div class="group-icon">💼</div>
+                    <div class="group-name">Placements & Internships</div>
+                    <div class="group-type">Career Support</div>
+                </div>
+                <div class="group-body">
+                    <div class="group-description">
+                        Placement updates, internship opportunities, job notifications, and career guidance. 
+                        Alumni mentorship and interview tips shared daily.
+                    </div>
+                    
+                    <div class="members-info">
+                        <div class="info-row">
+                            <span>👥 Members:</span>
+                            <span>650+</span>
+                        </div>
+                        <div class="info-row">
+                            <span>👤 Admin:</span>
+                            <span>Career Cell</span>
+                        </div>
+                        <div class="info-row">
+                            <span>📱 Type:</span>
+                            <span>WhatsApp</span>
+                        </div>
+                        <div class="info-row">
+                            <span>📈 Focus:</span>
+                            <span>Career</span>
+                        </div>
+                    </div>
+
+                    <div class="group-links">
+                        <a href="https://chat.whatsapp.com/bijoy24placements" target="_blank" class="btn-link btn-whatsapp">
+                            💚 Join WhatsApp Group
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Emergency & Safety -->
+            <div class="group-card">
+                <div class="group-header">
+                    <div class="group-icon">🚨</div>
+                    <div class="group-name">Emergency & Safety</div>
+                    <div class="group-type">Security</div>
+                </div>
+                <div class="group-body">
+                    <div class="group-description">
+                        Safety alerts, emergency contacts, security issues, and urgent help requests. 
+                        Quick response team available 24/7 for emergencies.
+                    </div>
+                    
+                    <div class="members-info">
+                        <div class="info-row">
+                            <span>👥 Members:</span>
+                            <span>1,100+</span>
+                        </div>
+                        <div class="info-row">
+                            <span>👤 Admin:</span>
+                            <span>Security Team</span>
+                        </div>
+                        <div class="info-row">
+                            <span>📱 Type:</span>
+                            <span>WhatsApp</span>
+                        </div>
+                        <div class="info-row">
+                            <span>⏰ Response:</span>
+                            <span>24/7</span>
+                        </div>
+                    </div>
+
+                    <div class="group-links">
+                        <a href="https://chat.whatsapp.com/bijoy24emergency" target="_blank" class="btn-link btn-whatsapp">
+                            💚 Join WhatsApp Group
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Guidelines -->
+        <div class="guidelines">
+            <h2>📋 Group Guidelines & Rules</h2>
+            <div class="guidelines-list">
+                <div class="guideline-item">
+                    <h3>✅ Be Respectful</h3>
+                    <p>Maintain respect for all members. No offensive language, personal attacks, or harassment. 
+                    Keep discussions friendly and constructive.</p>
+                </div>
+                <div class="guideline-item">
+                    <h3>🚫 No Spam</h3>
+                    <p>Avoid posting irrelevant content, multiple forwards, or promotional material. 
+                    Keep groups organized and focused on their purpose.</p>
+                </div>
+                <div class="guideline-item">
+                    <h3>📸 Respect Privacy</h3>
+                    <p>Don't share others' photos or personal information without permission. 
+                    Respect everyone's privacy and dignity.</p>
+                </div>
+                <div class="guideline-item">
+                    <h3>🔕 Silent Hours</h3>
+                    <p>Avoid messaging between 11 PM and 7 AM. Use emergency groups for urgent matters. 
+                    Respect everyone's sleep.</p>
+                </div>
+                <div class="guideline-item">
+                    <h3>💬 On-Topic Discussion</h3>
+                    <p>Keep messages relevant to the group's purpose. Use specific groups for specific topics. 
+                    Help organize and keep groups clean.</p>
+                </div>
+                <div class="guideline-item">
+                    <h3>🙏 Admin's Authority</h3>
+                    <p>Respect admin decisions. Follow group rules and guidelines. 
+                    Violations may lead to removal from the group.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="quick-links">
+            <h2>⚡ Quick Contact Information</h2>
+            <div class="quick-links-grid">
+                <div class="quick-link-card">
+                    <div class="quick-link-icon">👨‍✈️</div>
+                    <div class="quick-link-title">Provost Office</div>
+                    <div class="quick-link-info">Email: provost@bijoy24hall.com<br>Phone: +880-1XXX-XXXXXX</div>
+                </div>
+                <div class="quick-link-card">
+                    <div class="quick-link-icon">🏥</div>
+                    <div class="quick-link-title">Medical Emergency</div>
+                    <div class="quick-link-info">24/7 Helpline: +880-1XXX-XXXXXX<br>Campus Hospital</div>
+                </div>
+                <div class="quick-link-card">
+                    <div class="quick-link-icon">🚔</div>
+                    <div class="quick-link-title">Security & Safety</div>
+                    <div class="quick-link-info">Security Office: +880-1XXX-XXXXXX<br>Ground Floor</div>
+                </div>
+                <div class="quick-link-card">
+                    <div class="quick-link-icon">🎯</div>
+                    <div class="quick-link-title">Hall Captain</div>
+                    <div class="quick-link-info">Email: captain@bijoy24hall.com<br>Room: 301</div>
+                </div>
+                <div class="quick-link-card">
+                    <div class="quick-link-icon">⚽</div>
+                    <div class="quick-link-title">Sports Secretary</div>
+                    <div class="quick-link-info">Email: sports@bijoy24hall.com<br>Sports Room</div>
+                </div>
+                <div class="quick-link-card">
+                    <div class="quick-link-icon">📚</div>
+                    <div class="quick-link-title">Academic Coordinator</div>
+                    <div class="quick-link-info">Email: academic@bijoy24hall.com<br>Study Room</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Copy Notification -->
+        <div class="copy-notification" id="copyNotification">
+            ✅ Link copied to clipboard!
+        </div>
+
+    </div>
+
+    <script>
+        // Copy to clipboard function
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                const notification = document.getElementById('copyNotification');
+                notification.style.display = 'block';
+                setTimeout(() => {
+                    notification.style.display = 'none';
+                }, 3000);
+            });
+        }
+
+        // Smooth scroll for quick links
+        document.querySelectorAll('.quick-link-card').forEach(card => {
+            card.addEventListener('click', function() {
+                // You can add custom click handlers here if needed
+                console.log('Clicked on:', this.querySelector('.quick-link-title').textContent);
+            });
+        });
+
+        // Add animation on page load
+        window.addEventListener('load', function() {
+            const cards = document.querySelectorAll('.group-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.animation = `fadeInUp 0.6s ease forwards ${index * 0.1}s`;
+            });
+        });
+
+        // Fade in animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

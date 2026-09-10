@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bijoy 24 Hall - Food Menu</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+            padding: 30px 20px;
+        }
+
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 25px;
+            border: 2px solid white;
+            background: transparent;
+            color: white;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: white;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .food-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .food-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .food-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            background: #f0f0f0;
+        }
+
+        .food-info {
+            padding: 20px;
+        }
+
+        .food-name {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .food-description {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .food-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .price {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .add-btn {
+            padding: 8px 20px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+
+        .add-btn:hover {
+            background: #764ba2;
+        }
+
+        .category-title {
+            font-size: 2em;
+            color: white;
+            margin-top: 40px;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid white;
+        }
+
+        .no-image {
+            width: 100%;
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f0f0f0;
+            font-size: 3em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🍽️ Bijoy 24 Hall Food Menu</h1>
+            <p>Fresh and Delicious Food for Our Residents</p>
+        </div>
+
+        <div class="filters">
+            <button class="filter-btn active" onclick="filterMenu('all')">All Items</button>
+            <button class="filter-btn" onclick="filterMenu('main')">Main Courses</button>
+            <button class="filter-btn" onclick="filterMenu('rice')">Rice Dishes</button>
+            <button class="filter-btn" onclick="filterMenu('bread')">Breads</button>
+            <button class="filter-btn" onclick="filterMenu('soup')">Soups</button>
+            <button class="filter-btn" onclick="filterMenu('dessert')">Desserts</button>
+        </div>
+
+        <!-- Main Courses -->
+        <div class="category-title">🍗 Main Courses</div>
+        <div class="menu-grid" id="mainCourses">
+            <!-- Fish Card -->
+            <div class="food-card" data-category="main">
+                <div class="no-image">🐟</div>
+                <div class="food-info">
+                    <div class="food-name">Fried Fish</div>
+                    <div class="food-description">Crispy fried fish with special spices and herbs. Fresh from local market.</div>
+                    <div class="food-footer">
+                        <span class="price">৳ 180</span>
+                        <button class="add-btn" onclick="addToOrder('Fried Fish', 180)">Add</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chicken Curry Card -->
+            <div class="food-card" data-category="main">
+                <div class="no-image">🍗</div>
+                <div class="food-info">
+                    <div class="food-name">Chicken Curry</div>
+                    <div class="food-description">Tender chicken pieces in rich, aromatic curry sauce with onions and tomatoes.</div>
+                    <div class="food-footer">
+                        <span class="price">৳ 150</span>
+                        <button class="add-btn" onclick="addToOrder('Chicken Curry', 150)">Add</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Daal Fry Card -->
+            <div class="food-card" data-category="main">
+                <div class="no-image">🥘</div>
+                <div class="food-info">
+                    <div class="food-name">Daal Fry</div>
+                    <div class="food-description">Lentils fried with onions, garlic, and ginger. High in protein and nutrition.</div>
+                    <div class="food-footer">
+                        <span class="price">৳ 80</span>
+                        <button class="add-btn" onclick="addToOrder('Daal Fry', 80)">Add</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Beef Curry Card -->
+            <div class="food-card" data-category="main">
+                <div class="no-image">🍖</div>
+                <div class="food-info">
+                    <div class="food-name">Beef Curry</div>
+                    <div class="food-description">Slow-cooked beef in traditional Bengali curry with aromatic spices.</div>
+                    <div class="food-footer">
+                        <span class="price">৳ 200</span>
+                        <button class="add-btn" onclick="addToOrder('Beef Curry', 200)">Add</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vegetable Curry Card -->
+            <div class="food-card" data-category="main">
+                <div class="no-image">🥬</div>
+                <div class="food-info">
+                    <div class="food-name">Mixed Vegetable Curry</div>
+                    <div class="food-description">Fresh seasonal vegetables in spiced curry gravy. Perfect for vegetarians.</div>
+                    <div class="food-footer">
+                        <span class="price">৳ 90</span>
+                        <button class="add-btn" onclick="addToOrder('Mixed Vegetable Curry', 90)">Add</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Shrimp Curry Card -->
+            <div class="food-card" data-category="main">
+                <div class="no-image">🦐</div>
+                <div class="food-info">
+                    <div class="food-name">Shrimp Curry</div>
+                    <div class="food-description">Fresh shrimp cooked in coconut-based curry with traditional spices.</div>
+                    <div class="food-footer">
+                        <span class="price">৳ 220</span>
+                        <button class="add-btn" onclick="addToOrder('Shrimp Curry', 220)">Add</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Rice Dishes -->
+        <div class="category-title">🍚 Rice Dishes</div>
+        <div class="menu-grid" id="riceDishes">
+            <!-- Plain Rice Card -->
+            <div class="food-card" data-category="rice">
+                <div class="no-image">🍚</div>
+                <div class="food-info">
+                    <div class="food-name">Plain Rice</div>
+                    <div class="food-description">Fluffy, perfectly cooked white rice. Complements any curry.</div>
+                    <div class="food-footer">
+                        <span class="price">৳ 40</span>
+                        <button class="add-btn" onclick="addToOrder('Plain Rice', 40)">Add</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Biryani Card -->
+            <div class="food-card" data-category="rice">
+                <div class="no-image">🍱</div>
+                <div class="food-info">
+                    <div class="food-name">Chicken Biryani</div>
+                    <div class="food-description">Fragrant basmati rice cooked with spiced chicken and herbs. A complete meal.</div>
+                    <div class="food-footer">
+                        <span class="price">৳ 180</span>
+                        <button class="add-btn" onclick="addToOrder('Chicken Biryani', 180)">Add</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Beef Biryani Card -->
+            <div class="food-card" data-category="rice">
+                <div class="no-image">🍱</div>
+                <div class="food-info">
+                    <div class="food-name">Beef Biryani</div>
+                    <div class="food-description">Aromatic biryani with tender beef pieces and long-grain rice.</div>
+                    <div class="food-footer">
+                        <span class="price">৳ 200</span>
+                        <button class="add-btn" onclick="addToOrder('Beef Biryani', 200)">Add</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vegetable Pulao Card -->
+            <div class="food-card" data-category="rice">
+                <div class="no-image">🥘</div>
+                <div class="food-info">
+                    <div class="food-name">Vegetable Pulao</div>
+                    <div class="food-description">Rice cooked with fresh vegetables and aromatic spices.</div>
+                    <div class="food-footer">
+                        <span class="price">৳ 100</span>
+                        <button class="add-btn" onclick="addToOrder('Vegetable Pulao', 100)">Add</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Breads -->
+        <div class="category-title">🥖 Breads</div>
+        <div class="menu-grid" id="breads">
+            <!-- Roti Card -->
+            <div class="food-card" data-category="bread">
+                <div class="no-image">🥖</div>
+                <div class="food-info">
+                    <div class="food-name">Roti</div>
+                    <div class="food-description">Soft, freshly made Indian flatbread. Perfect with any curry.</div>
+                    <div class="food-footer">
+                        <span class="price">৳ 8 (Each)</span>
+                        <button class="add-btn" onclick="addToOrder('Roti', 8)">Add</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Paratha Card -->
+            <div class="food-card" data-category="bread">
+                <div class="no-image">🥞</div>
+                <div class="food-info">
+                    <div class="food-name">Paratha</div>
+                    <div class="food-description">Crispy, layered flatbread with ghee. Best served hot.</div>
+                    <div class="food-footer">
+                        <span class="price">৳ 12 (Each)</span>
+                        <button class="add-btn" onclick="addToOrder('Paratha', 12)">Add</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Naan Card -->
+            <div class="food-card" data-category="bread">
+                <div class="no-image">🍞</div>
+                <div class="food-info">
+                    <div class="food-name">Naan</div>
+                    <div class="food-description">Soft, fluffy tandoori bread. Great for gravy curries.</div>
+                    <div class="food-footer">
+                        <span class="price">৳ 15 (Each)</span>
+                        <button class="add-btn" onclick="addToOrder('Naan', 15)">Add</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Luchi Card -->
+            <div class="food-card" data-category="bread">
+                <div class="no-image">🍴</div>
+                <div class="food-info">
+                    <div class="food-name">Luchi</div>
+                    <div class="food-description">Puffed deep-fried Indian bread. A Bengali specialty.</div>
+                    <div class="food-footer">
+                        <span class="price">৳ 10 (Each)</span>
+                        <button class="add-btn" onclick="addToOrder('Luchi', 10)">Add</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Soups -->
+        <div class="category-title">🍲 Soups</div>
+        <div class="menu-grid" id="soups">
+            <!-- Chicken Soup Card -->
+            <div class="food-card" data-category="soup">
+                <div class="no-image">🍗</div>
+                <div class="food-info">
+                    <div class="food-name">Chicken Soup</div>
+                    <div class="food-description">Warm, comforting chicken broth with vegetables.</div>
+                    <div class="food-footer">
+                        <span class="price">৳ 70</span>
+                        <button class="add-btn" onclick="addToOrder('Chicken Soup', 70)">Add</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lentil Soup Card -->
+            <div class="food-card" data-category="soup">
+                <div class="no-image">🥘</div>
+                <div class="food-info">
+                    <div class="food-name">Lentil Soup</div>
+                    <div class="food-description">Nutritious lentil soup with aromatic spices.</div>
+                    <div class="food-footer">
+                        <span class="price">৳ 60</span>
+                        <button class="add-btn" onclick="addToOrder('Lentil Soup', 60)">Add</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vegetable Soup Card -->
+            <div class="food-card" data-category="soup">
+                <div class="no-image">🥬</div>
+                <div class="food-info">
+                    <div class="food-name">Vegetable Soup</div>
+                    <div class="food-description">Fresh vegetable soup loaded with seasonal veggies.</div>
+                    <div class="food-footer">
+                        <span class="price">৳ 55</span>
+                        <button class="add-btn" onclick="addToOrder('Vegetable Soup', 55)">Add</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Desserts -->
+        <div class="category-title">🍰 Desserts</div>
+        <div class="menu-grid" id="desserts">
+            <!-- Kheer Card -->
+            <div class="food-card" data-category="dessert">
+                <div class="no-image">🍮</div>
+                <div class="food-info">
+                    <div class="food-name">Kheer</div>
+                    <div class="food-description">Rice pudding with milk, condensed milk, and dry fruits.</div>
+                    <div class="food-footer">
+                        <span class="price">৳ 40</span>
+                        <button class="add-btn" onclick="addToOrder('Kheer', 40)">Add</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gulab Jamun Card -->
+            <div class="food-card" data-category="dessert">
+                <div class="no-image">🍡</div>
+                <div class="food-info">
+                    <div class="food-name">Gulab Jamun</div>
+                    <div class="food-description">Sweet dumplings in sugar syrup. A classic Indian dessert.</div>
+                    <div class="food-footer">
+                        <span class="price">৳ 45</span>
+                        <button class="add-btn" onclick="addToOrder('Gulab Jamun', 45)">Add</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Payesh Card -->
+            <div class="food-card" data-category="dessert">
+                <div class="no-image">🥛</div>
+                <div class="food-info">
+                    <div class="food-name">Payesh</div>
+                    <div class="food-description">Bengal's favorite sweet dish made with rice, milk, and jaggery.</div>
+                    <div class="food-footer">
+                        <span class="price">৳ 50</span>
+                        <button class="add-btn" onclick="addToOrder('Payesh', 50)">Add</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rasgulla Card -->
+            <div class="food-card" data-category="dessert">
+                <div class="no-image">🍧</div>
+                <div class="food-info">
+                    <div class="food-name">Rasgulla</div>
+                    <div class="food-description">Soft cottage cheese balls in sugar syrup. Sweet and spongy.</div>
+                    <div class="food-footer">
+                        <span class="price">৳ 60</span>
+                        <button class="add-btn" onclick="addToOrder('Rasgulla', 60)">Add</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Filter functionality
+        function filterMenu(category) {
+            const cards = document.querySelectorAll('.food-card');
+            const buttons = document.querySelectorAll('.filter-btn');
+
+            // Update active button
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Filter cards
+            cards.forEach(card => {
+                if (category === 'all') {
+                    card.style.display = 'block';
+                } else {
+                    if (card.dataset.category === category) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                }
+            });
+        }
+
+        // Add to order functionality
+        function addToOrder(foodName, price) {
+            alert(`✅ ${foodName} added to your order!\nPrice: ৳ ${price}`);
+            // This can be extended to actually add items to a cart
+        }
+    </script>
+</body>
+</html>

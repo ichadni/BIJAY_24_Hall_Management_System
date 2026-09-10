@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hall Admission Application - Bijoy 24 Hall</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <div class="logo-icon">B24</div>
+                <h1>Bijoy 24 Hall</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#features">Features</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="login.html" class="btn-login">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Admission Form Section -->
+    <section class="form-section">
+        <div class="form-container">
+            <div class="form-header">
+                <h1>Hall Admission Application Form</h1>
+                <p>Fill out the form carefully with authentic information</p>
+            </div>
+
+            <form id="admissionForm" onsubmit="handleAdmission(event)">
+                <!-- Personal Information -->
+                <div class="form-card">
+                    <h3>Personal Information</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="studentName">Full Name *</label>
+                            <input type="text" id="studentName" required placeholder="Enter your full name">
+                        </div>
+                        <div class="form-group">
+                            <label for="fatherName">Father's Name *</label>
+                            <input type="text" id="fatherName" required placeholder="Enter father's name">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="motherName">Mother's Name *</label>
+                            <input type="text" id="motherName" required placeholder="Enter mother's name">
+                        </div>
+                        <div class="form-group">
+                            <label for="dob">Date of Birth *</label>
+                            <input type="date" id="dob" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nid">National ID / Birth Certificate No *</label>
+                            <input type="text" id="nid" required placeholder="Enter NID or Birth Certificate No">
+                        </div>
+                        <div class="form-group">
+                            <label for="bloodGroup">Blood Group *</label>
+                            <select id="bloodGroup" required>
+                                <option value="">Select Blood Group</option>
+                                <option value="A+">A+</option>
+                                <option value="A-">A-</option>
+                                <option value="B+">B+</option>
+                                <option value="B-">B-</option>
+                                <option value="O+">O+</option>
+                                <option value="O-">O-</option>
+                                <option value="AB+">AB+</option>
+                                <option value="AB-">AB-</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Academic Information -->
+                <div class="form-card">
+                    <h3>Academic Information</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="regNumber">Registration Number *</label>
+                            <input type="text" id="regNumber" required placeholder="e.g., 2021831036">
+                        </div>
+                        <div class="form-group">
+                            <label for="roll">Roll Number *</label>
+                            <input type="text" id="roll" required placeholder="Enter your roll number">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="department">Department *</label>
+                            <select id="department" required>
+                                <option value="">Select Department</option>
+                                <option value="CSE">Computer Science & Engineering</option>
+                                <option value="EEE">Electrical & Electronic Engineering</option>
+                                <option value="CEP">Chemical Engineering & Polymer Science</option>
+                                <option value="MCE">Mechanical Engineering</option>
+                                <option value="IPE">Industrial & Production Engineering</option>
+                                <option value="CEE">Civil & Environmental Engineering</option>
+                                <option value="PHY">Physics</option>
+                                <option value="MAT">Mathematics</option>
+                                <option value="CHE">Chemistry</option>
+                                <option value="STA">Statistics</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="session">Session *</label>
+                            <input type="text" id="session" required placeholder="e.g., 2021-22">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="semester">Current Semester *</label>
+                            <select id="semester" required>
+                                <option value="">Select Semester</option>
+                                <option value="1st">1st Semester</option>
+                                <option value="2nd">2nd Semester</option>
+                                <option value="3rd">3rd Semester</option>
+                                <option value="4th">4th Semester</option>
+                                <option value="5th">5th Semester</option>
+                                <option value="6th">6th Semester</option>
+                                <option value="7th">7th Semester</option>
+                                <option value="8th">8th Semester</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="cgpa">CGPA *</label>
+                            <input type="number" id="cgpa" step="0.01" min="0" max="4" required placeholder="Enter CGPA">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Information -->
+                <div class="form-card">
+                    <h3>Contact Information</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">Mobile Number *</label>
+                            <input type="tel" id="phone" required placeholder="01XXXXXXXXX">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" required placeholder="your.email@example.com">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="presentAddress">Present Address *</label>
+                        <textarea id="presentAddress" required rows="2" placeholder="Enter your present address"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="permanentAddress">Permanent Address *</label>
+                        <textarea id="permanentAddress" required rows="2" placeholder="Enter your permanent address"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="distanceFromHome">Distance from Home (KM) *</label>
+                        <input type="number" id="distanceFromHome" required placeholder="Enter distance in kilometers">
+                    </div>
+                </div>
+
+                <!-- Guardian Information -->
+                <div class="form-card">
+                    <h3>Guardian Information</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="guardianName">Guardian Name *</label>
+                            <input type="text" id="guardianName" required placeholder="Enter guardian name">
+                        </div>
+                        <div class="form-group">
+                            <label for="guardianRelation">Relation *</label>
+                            <input type="text" id="guardianRelation" required placeholder="e.g., Father, Mother">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="guardianPhone">Guardian Phone *</label>
+                            <input type="tel" id="guardianPhone" required placeholder="01XXXXXXXXX">
+                        </div>
+                        <div class="form-group">
+                            <label for="guardianOccupation">Guardian Occupation *</label>
+                            <input type="text" id="guardianOccupation" required placeholder="Enter occupation">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quota Selection -->
+                <div class="form-card">
+                    <h3>Quota Application</h3>
+                    <div class="form-group">
+                        <label>Apply under Quota (Select if applicable)</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="quota" value="merit"> Merit Based
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="quota" value="economic"> Economic Hardship
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="quota" value="distance"> Distance from Home
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="quota" value="general"> General
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bank Payment Information -->
+                <div class="form-card">
+                    <h3>Bank Payment Information</h3>
+                    <p class="info-text">⚠️ Admission fee: ৳2,100 must be deposited at Sonali Bank</p>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="bankName">Bank Name *</label>
+                            <input type="text" id="bankName" required value="Sonali Bank" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="branchName">Branch Name *</label>
+                            <input type="text" id="branchName" required placeholder="Enter branch name">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="accountNumber">Account Number *</label>
+                            <input type="text" id="accountNumber" required placeholder="Enter account number">
+                        </div>
+                        <div class="form-group">
+                            <label for="receiptNumber">Receipt Number *</label>
+                            <input type="text" id="receiptNumber" required placeholder="Enter receipt number">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="paymentDate">Payment Date *</label>
+                        <input type="date" id="paymentDate" required>
+                    </div>
+                </div>
+
+                <!-- Document Upload -->
+                <div class="form-card">
+                    <h3>Required Documents</h3>
+                    <div class="form-group">
+                        <label for="passportPhoto">Passport Size Photo *</label>
+                        <input type="file" id="passportPhoto" accept="image/*" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="stampPhoto">Stamp Size Photo *</label>
+                        <input type="file" id="stampPhoto" accept="image/*" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="transcript">Academic Transcript (PDF) *</label>
+                        <input type="file" id="transcript" accept=".pdf" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="universityId">University ID Card Copy *</label>
+                        <input type="file" id="universityId" accept="image/*,.pdf" required>
+                    </div>
+                </div>
+
+                <!-- Declaration -->
+                <div class="form-card">
+                    <h3>Declaration</h3>
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" required>
+                            I hereby declare that all the information provided above is true and accurate to the best of my knowledge. I agree to abide by all the rules and regulations of Bijoy 24 Hall.
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="form-actions">
+                    <button type="reset" class="btn btn-secondary">Reset Form</button>
+                    <button type="submit" class="btn btn-primary">Submit Application</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Bijoy 24 Hall. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="admission.js"></script>
+</body>
+</html>
